@@ -24,3 +24,6 @@ hs_err_pid*
 
 # Include everything in lib folder
 !lib/*
+
+# macOS nonsense
+.DS_Store

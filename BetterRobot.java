@@ -1,8 +1,8 @@
 import becker.robots.*;
-public class betterRobot extends Robot
+public class BetterRobot extends Robot
 {
     //Constructor
-    public betterRobot(City c, int s, int a, Direction d, int n)
+    public BetterRobot(City c, int s, int a, Direction d, int n)
     {
         super(c, s, a, d, n);
     }   

@@ -1,5 +1,5 @@
 import becker.robots.*;
-public class test {
+public class Test {
     public static void main(String[] args)
     {
         City toronto = new City(10, 15);

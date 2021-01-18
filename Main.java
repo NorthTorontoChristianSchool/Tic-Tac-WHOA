@@ -35,7 +35,7 @@ public class Main
         String[] names = {"A","B","C","D"};
         for (int i=0; i<=3; i++){
             names[i].setColor(Color.BLUE);
-        }
+        }//poo
 
         //adfjkfdsjnsdfnkfs
 

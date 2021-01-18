@@ -20,6 +20,7 @@ public class BetterRobot extends Robot
             super.turnLeft();
         }
         super.move();
+        super.turnLeft(); //face north again
     } 
     
     public void moveSouth()
@@ -28,12 +29,18 @@ public class BetterRobot extends Robot
             super.turnLeft();
         }
         super.move();
+        for (int i = 0; i < 2; i++) { //face north again
+            super.turnLeft();
+        }
     }   
     
     public void moveWest()
     {
         super.turnLeft();
         super.move();
+        for (int i = 0; i < 3; i++) { //face north again
+            super.turnLeft();
+        }
     }
     
 }    

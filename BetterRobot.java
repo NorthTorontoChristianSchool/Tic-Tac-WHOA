@@ -42,6 +42,7 @@ public class BetterRobot extends Robot
         for (int i = 0; i < 3; i++) { //face north again
             super.turnLeft();
         }
+        
     }
 
     public void victoryDance()

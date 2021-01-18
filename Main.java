@@ -36,8 +36,11 @@ public class Main
         for (int i=0; i<=3; i++){
             names[i].setColor(Color.BLUE);
         }
+<<<<<<< Updated upstream
 
         
+=======
+>>>>>>> Stashed changes
 
     }
 }

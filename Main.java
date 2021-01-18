@@ -8,18 +8,18 @@ public class Main
         City board = new City(7,7);
         board.setFrameTitle("Game");
         for (int i=1; i<=4; i++){
-        Wall topWalls = new Wall (board,1,i,Direction.NORTH);
+            Wall topWalls = new Wall (board,1,i,Direction.NORTH);
         }
         for (int i=1; i<=4; i++){
-        Wall btmWalls = new Wall (board,4,i,Direction.SOUTH);
+            Wall btmWalls = new Wall (board,4,i,Direction.SOUTH);
         }
         for (int i=1; i<=4; i++){
-        Wall leftWalls = new Wall (board,i,1,Direction.WEST);
+            Wall leftWalls = new Wall (board,i,1,Direction.WEST);
         }
         for (int i=1; i<=4; i++){
-        Wall rightWalls = new Wall (board,i,4,Direction.EAST);
+            Wall rightWalls = new Wall (board,i,4,Direction.EAST);
         }
-        
+
         //putting robots on the board
         //p1
         Robot a = new Robot(board, 1, 1, Direction.EAST, 0);
@@ -31,11 +31,13 @@ public class Main
         Robot B = new Robot(board, 4, 1, Direction.EAST, 0);
         Robot C = new Robot(board, 1, 4, Direction.WEST, 0);
         Robot D = new Robot(board, 3, 4, Direction.WEST, 0);
-        
+
         String[] names = {"A","B","C","D"};
         for (int i=0; i<=3; i++){
             names[i].setColor(Color.BLUE);
         }
+
+        //adfjkfdsjnsdfnkfs
 
     }
 }

@@ -32,12 +32,12 @@ public class Main
         Robot C = new Robot(board, 1, 4, Direction.WEST, 0);
         Robot D = new Robot(board, 3, 4, Direction.WEST, 0);
 
-        String[] names = {"A","B","C","D"};
+        Robot[] names = {A,B,C,D};
         for (int i=0; i<=3; i++){
             names[i].setColor(Color.BLUE);
-        }//poo
+        }
 
-        //adfjkfdsjnsdfnkfs
+        
 
     }
 }

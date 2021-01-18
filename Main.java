@@ -5,12 +5,12 @@ public class Main
 {
     public static void main(String[] args)
     {
-<<<<<<< Updated upstream
+
         //SETTING UP THE BOARD
-=======
+
         Scanner in = new Scanner(System.in);
         
->>>>>>> Stashed changes
+
         //creating the walls of the board game
         City board = new City(7,7);
         board.setFrameTitle("Game");
@@ -47,8 +47,7 @@ public class Main
         for (int i=0; i<=3; i++){
             names[i].setColor(Color.BLUE);
         }
-<<<<<<< Updated upstream
-=======
+
 
         int boardList[][] = {{1, 0, 0, 2},{2, 0, 0, 1},{1, 0, 0, 2},{2, 0, 0, 1}};
         
@@ -77,6 +76,6 @@ public class Main
                 p1direction = in.nextLine();
 
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
->>>>>>> Stashed changes
+
     }
 }

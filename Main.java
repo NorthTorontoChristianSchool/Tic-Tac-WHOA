@@ -4,6 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
+        //SETTING UP THE BOARD
         //creating the walls of the board game
         City board = new City(7,7);
         board.setFrameTitle("Game");
@@ -19,8 +20,12 @@ public class Main
         for (int i=1; i<=4; i++){
             Wall rightWalls = new Wall (board,i,4,Direction.EAST);
         }
-
-        //putting robots on the board
+        
+        //COLOURS OF THE BOARD
+        //Intersection road = new Intersection(board,7,7);
+        //road.colorRoads(Color.BLUE);
+        
+        //PUTTING ROBOTS ON THE BOARD
         //p1
         Robot a = new Robot(board, 1, 1, Direction.EAST, 0);
         Robot b = new Robot(board, 3, 1, Direction.EAST, 0);
@@ -36,11 +41,5 @@ public class Main
         for (int i=0; i<=3; i++){
             names[i].setColor(Color.BLUE);
         }
-<<<<<<< Updated upstream
-
-        
-=======
->>>>>>> Stashed changes
-
     }
 }

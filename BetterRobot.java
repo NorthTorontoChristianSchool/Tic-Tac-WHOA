@@ -1,4 +1,5 @@
 import becker.robots.*;
+import java.awt.Color;
 public class BetterRobot extends Robot
 {
     //Constructor
@@ -22,7 +23,7 @@ public class BetterRobot extends Robot
         super.move();
         super.turnLeft(); //face north again
     } 
-    
+
     public void moveSouth()
     {
         for (int i = 0; i < 2; i++) {
@@ -33,7 +34,7 @@ public class BetterRobot extends Robot
             super.turnLeft();
         }
     }   
-    
+
     public void moveWest()
     {
         super.turnLeft();
@@ -42,11 +43,14 @@ public class BetterRobot extends Robot
             super.turnLeft();
         }
     }
-    
+
     public void victoryDance()
     {
-        for (int i = 0; i < 10; i++) { 
+        super.setSpeed(5);
+        Color[] colourList = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK,};
+        for (int i = 0; i < 12; i++) { 
             super.turnLeft();
+            super.setColor(colourList[i]);
         }
     }
 }    

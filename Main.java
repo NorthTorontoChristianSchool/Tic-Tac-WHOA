@@ -1,10 +1,16 @@
 import becker.robots.*;
+import java.util.*; 
 import java.awt.Color;
 public class Main
 {
     public static void main(String[] args)
     {
+
         //SETTING UP THE BOARD
+
+        Scanner in = new Scanner(System.in);
+        
+
         //creating the walls of the board game
         City board = new City(7,7);
         board.setFrameTitle("Game");
@@ -41,5 +47,35 @@ public class Main
         for (int i=0; i<=3; i++){
             names[i].setColor(Color.BLUE);
         }
+
+
+        int boardList[][] = {{1, 0, 0, 2},{2, 0, 0, 1},{1, 0, 0, 2},{2, 0, 0, 1}};
+        
+        //Get and validate the user's choice of where to move
+        String p1direction;
+        String p2direction;
+        Robot p1robot;
+        Robot p2robot;
+        //player one
+        // do {
+                // System.out.println("Player 1, which piece would you like to move? (a, b, c, or d)");
+                // p1robot = Robot.parseRobot(in.nextLine()); doesnt work LOL
+        // } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
+        do {
+                System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
+                p1direction = in.nextLine();
+        } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
+        
+        if (p1direction == "n") {
+            
+        }
+        
+        //player two
+        do {
+                System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
+                p1direction = in.nextLine();
+
+        } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
+
     }
 }

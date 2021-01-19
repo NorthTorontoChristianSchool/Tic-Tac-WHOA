@@ -25,15 +25,14 @@ public class Main
         for (int i=1; i<=4; i++){
             Wall rightWalls = new Wall (board,i,4,Direction.EAST);
         }
-<<<<<<< Updated upstream
-=======
+
 
         //COLOURS OF THE BOARD
         Intersection road = new Intersection(board,7,7);
         //inherit from the city class and customize intersection
         //road.colorRoads(Color.BLUE);
         //IntersectionIcon hello = new IntersectionIcon(Color.BLUE,Color.RED);
->>>>>>> Stashed changes
+
 
         //PUTTING ROBOTS ON THE BOARD
         //p1
@@ -69,7 +68,6 @@ public class Main
         String roboSelected = in.nextLine();
         System.out.println("Would you like to move north(n), south(s), east(e) or west(w)?");
         String direction = in.nextLine();
-<<<<<<< Updated upstream
         
         
             //player one
@@ -81,7 +79,6 @@ public class Main
             do {
             System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
             p1direction = in.nextLine();
-=======
 
         //player one
         // do {
@@ -92,7 +89,6 @@ public class Main
         do {
         System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
         p1direction = in.nextLine();
->>>>>>> Stashed changes
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
         
         if (p1direction == "n") {
@@ -101,18 +97,15 @@ public class Main
 
         //player two
         do {
-<<<<<<< Updated upstream
             System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
             p1direction = in.nextLine();
             
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
-        */
-=======
+        
         System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
         p1direction = in.nextLine();
 
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
          */
->>>>>>> Stashed changes
     }
 }

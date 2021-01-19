@@ -29,6 +29,7 @@ public class BetterRobot extends Robot
 
     public boolean moveNorth()
     {
+        faceNorth();
         if (super.frontIsClear()){
             super.move(); //move
             return true;
@@ -40,18 +41,15 @@ public class BetterRobot extends Robot
 
     public boolean moveEast()
     {
+        faceNorth();
         for (int i = 0; i < 3; i++) {
             super.turnLeft(); //face East by turning right
         }
         if (super.frontIsClear()){
             super.move(); //move
-            //super.turnLeft(); //face north again
-            faceNorth();
             return true;
         }
         else{
-            //System.out.println("There is already a piece in that spot. Please move to an empty spot.");
-            faceNorth();
             return false;
         }
 
@@ -59,16 +57,15 @@ public class BetterRobot extends Robot
 
     public boolean moveSouth()
     {
+        faceNorth();
         for (int i = 0; i < 2; i++) { //face south
             super.turnLeft();
         }
         if (super.frontIsClear()){
             super.move(); //move
-            faceNorth();
             return true;
         }
         else{
-            faceNorth();
             return false;
         }
 
@@ -76,14 +73,13 @@ public class BetterRobot extends Robot
 
     public boolean moveWest()
     {
+        faceNorth();
         super.turnLeft(); //face west
         if (super.frontIsClear()){
             super.move(); //move
-            faceNorth();
             return true;
         }
         else{
-            faceNorth();
             return false;
         }
     }

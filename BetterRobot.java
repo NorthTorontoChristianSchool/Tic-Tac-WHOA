@@ -10,39 +10,72 @@ public class BetterRobot extends Robot
 
     //public methods
     //robots moves - robot originally facing north
-    public void moveNorth()
+    public boolean moveNorth()
     {
-        super.move();
+        if (super.frontIsClear()){
+            super.move(); //move
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
-    public void moveEast()
+    public boolean moveEast()
     {
         for (int i = 0; i < 3; i++) {
-            super.turnLeft();
+            super.turnLeft(); //face East by turning right
         }
-        super.move();
-        super.turnLeft(); //face north again
+        if (super.frontIsClear()){
+            super.move(); //move
+            super.turnLeft(); //face north again
+            return true;
+        }
+        else{
+            //System.out.println("There is already a piece in that spot. Please move to an empty spot.");
+            super.turnLeft(); //face north again
+            return false;
+        }
+
     } 
 
-    public void moveSouth()
+    public boolean moveSouth()
     {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) { //face south
             super.turnLeft();
         }
-        super.move();
-        for (int i = 0; i < 2; i++) { //face north again
-            super.turnLeft();
+        if (super.frontIsClear()){
+            super.move(); //move
+            for (int i = 0; i < 2; i++) { //face north again
+                super.turnLeft();
+            }
+            return true;
         }
+        else{
+            for (int i = 0; i < 2; i++) { //face north again
+                super.turnLeft();
+            }
+            return false;
+        }
+
     }   
 
-    public void moveWest()
+    public boolean moveWest()
     {
-        super.turnLeft();
-        super.move();
-        for (int i = 0; i < 3; i++) { //face north again
-            super.turnLeft();
+        super.turnLeft(); //face west
+        if (super.frontIsClear()){
+            super.move(); //move
+            for (int i = 0; i < 3; i++) { //face north again
+                super.turnLeft();
+            }
+            return true;
         }
-        
+        else{
+            for (int i = 0; i < 3; i++) { //face north again
+                super.turnLeft();
+            }
+            return false;
+        }
     }
 
     public void victoryDance()

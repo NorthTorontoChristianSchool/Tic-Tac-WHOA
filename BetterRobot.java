@@ -2,15 +2,13 @@ import becker.robots.*;
 import java.awt.Color;
 public class BetterRobot extends Robot
 {
-<<<<<<< Updated upstream
-=======
+
 
     protected void customizeIntersection(Intersection intersection){
         //IntersectionIcon(Color.WHITE, Color.PINK);
     }
 
     //if karel.getIntersection().countSims() > 1 //move back
->>>>>>> Stashed changes
     //Constructor
     public BetterRobot(City c, int s, int a, Direction d, int n)
     {

@@ -11,7 +11,7 @@ public class Main
         Scanner in = new Scanner(System.in);
 
         //creating the walls of the board game
-        City board = new City(7,7);
+        City board = new City(6,6);
         board.setFrameTitle("Game");
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);
@@ -60,72 +60,35 @@ public class Main
         int boardList[][] = {{1, 0, 0, 2},{2, 0, 0, 1},{1, 0, 0, 2},{2, 0, 0, 1}}; //1st [] is for group, 2nd [] is for spot in group
         //Get and validate the user's choice of where to move
         String p1direction, p2direction;
-        Robot p1robot, p2robot;
-
-        System.out.println("Player 1 (green), which piece would you like to move (A, B, C, or D)?");
-        String roboSelected = in.nextLine();
-        System.out.println("Would you like to move north(n), south(s), east(e) or west(w)?");
-        String direction = in.nextLine();
-
+        String p1robot, p2robot;
+       
         //player one
-        // do {
-        // System.out.println("Player 1, which piece would you like to move? (a, b, c, or d)");
-        // p1robot = Robot.parseRobot(in.nextLine()); doesnt work LOL
-        // } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
-        /*
-        <<<<<<< Updated upstream
         do {
-        System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
-        p1direction = in.nextLine();
-        =======
+            System.out.println("Player 1 (green), which piece would you like to move? (a, b, c, or d)");
+            p1robot = in.nextLine();
+        } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
+         
         do {
-        System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
-        p1direction = in.nextLine();
-        >>>>>>> Stashed changes
+            System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
+            p1direction = in.nextLine();
 
-        //player one
-        // do {
-        // System.out.println("Player 1, which piece would you like to move? (a, b, c, or d)");
-        // p1robot = Robot.parseRobot(in.nextLine()); doesnt work LOL
-        // } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
-        /*
-        do {
-        System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
-        p1direction = in.nextLine();
-        <<<<<<< Updated upstream
-        =======
-
-        >>>>>>> Stashed changes
-        } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
-
-        if (p1direction == "n") {
-
-        }
+        } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w")); 
 
         //player two
         do {
-        <<<<<<< Updated upstream
-        System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
-        p1direction = in.nextLine();
+                System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
+                p1direction = in.nextLine();
 
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
+        
+        do {
+            System.out.println("Player 1 (green), which piece would you like to move? (a, b, c, or d)");
+            p1robot = in.nextLine();
+        } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
 
-        =======
-
-        >>>>>>> Stashed changes
-        System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
-        p1direction = in.nextLine();
-
-        } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
-         */
-
+        
+        
     }
-
-    // System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
-    // p1direction = in.nextLine();
-
-    // } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
-    // */
-
 }
+
 

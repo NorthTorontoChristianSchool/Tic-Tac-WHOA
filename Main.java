@@ -9,7 +9,6 @@ public class Main
         //SETTING UP THE BOARD
 
         Scanner in = new Scanner(System.in);
-        
 
         //creating the walls of the board game
         City board = new City(7,7);
@@ -28,52 +27,61 @@ public class Main
         }
         
         //COLOURS OF THE BOARD
-        //Intersection road = new Intersection(board,7,7);
+        Intersection road = new Intersection(board,7,7);
+        //inherit from the city class and customize intersection
         //road.colorRoads(Color.BLUE);
-        
+        //IntersectionIcon hello = new IntersectionIcon(Color.BLUE,Color.RED);
+
         //PUTTING ROBOTS ON THE BOARD
         //p1
-        Robot a = new Robot(board, 1, 1, Direction.EAST, 0);
-        Robot b = new Robot(board, 3, 1, Direction.EAST, 0);
-        Robot c = new Robot(board, 2, 4, Direction.WEST, 0);
-        Robot d = new Robot(board, 4, 4, Direction.WEST, 0);
+        Robot A = new Robot(board, 2, 1, Direction.NORTH, 0);
+        Robot B = new Robot(board, 4, 1, Direction.NORTH, 0);
+        Robot C = new Robot(board, 1, 4, Direction.NORTH, 0);
+        Robot D = new Robot(board, 3, 4, Direction.NORTH, 0);
         //p2
-        Robot A = new Robot(board, 2, 1, Direction.EAST, 0);
-        Robot B = new Robot(board, 4, 1, Direction.EAST, 0);
-        Robot C = new Robot(board, 1, 4, Direction.WEST, 0);
-        Robot D = new Robot(board, 3, 4, Direction.WEST, 0);
+        Robot E = new Robot(board, 1, 1, Direction.NORTH, 0);
+        Robot F = new Robot(board, 3, 1, Direction.NORTH, 0);
+        Robot G = new Robot(board, 2, 4, Direction.NORTH, 0);
+        Robot H = new Robot(board, 4, 4, Direction.NORTH, 0);
 
-        Robot[] names = {A,B,C,D};
+        Robot[] roboNames = {A,B,C,D,E,F,G,H};
+        String[] strNames = {"A","B","C","D","E","F","G","H"};
+        //p1
         for (int i=0; i<=3; i++){
-            names[i].setColor(Color.BLUE);
+            roboNames[i].setColor(Color.GREEN);
+            roboNames[i].setLabel(strNames[i]);
+        }
+        //p2
+        for (int i=4; i<=7; i++){
+            roboNames[i].setColor(Color.ORANGE);
+            roboNames[i].setLabel(strNames[i]);
         }
 
-
-        int boardList[][] = {{1, 0, 0, 2},{2, 0, 0, 1},{1, 0, 0, 2},{2, 0, 0, 1}};
-        
+        int boardList[][] = {{1, 0, 0, 2},{2, 0, 0, 1},{1, 0, 0, 2},{2, 0, 0, 1}}; //1st [] is for group, 2nd [] is for spot in group
         //Get and validate the user's choice of where to move
-        String p1direction;
-        String p2direction;
-        Robot p1robot;
-        Robot p2robot;
+        String p1direction, p2direction;
+        Robot p1robot, p2robot;
+
+        System.out.println("Player 1, which piece would you like to move? Your colour is green. (A, B, C, or D)");
+
         //player one
         // do {
-                // System.out.println("Player 1, which piece would you like to move? (a, b, c, or d)");
-                // p1robot = Robot.parseRobot(in.nextLine()); doesnt work LOL
+        // System.out.println("Player 1, which piece would you like to move? (a, b, c, or d)");
+        // p1robot = Robot.parseRobot(in.nextLine()); doesnt work LOL
         // } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
         do {
-                System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
-                p1direction = in.nextLine();
+            System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
+            p1direction = in.nextLine();
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
-        
+
         if (p1direction == "n") {
-            
+
         }
-        
+
         //player two
         do {
-                System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
-                p1direction = in.nextLine();
+            System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
+            p1direction = in.nextLine();
 
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
 

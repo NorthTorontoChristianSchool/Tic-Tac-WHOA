@@ -25,12 +25,6 @@ public class Main
         for (int i=1; i<=4; i++){
             Wall rightWalls = new Wall (board,i,4,Direction.EAST);
         }
-        
-        //COLOURS OF THE BOARD
-        Intersection road = new Intersection(board,7,7);
-        //inherit from the city class and customize intersection
-        //road.colorRoads(Color.BLUE);
-        //IntersectionIcon hello = new IntersectionIcon(Color.BLUE,Color.RED);
 
         //PUTTING ROBOTS ON THE BOARD
         //p1
@@ -62,18 +56,23 @@ public class Main
         String p1direction, p2direction;
         Robot p1robot, p2robot;
 
-        System.out.println("Player 1, which piece would you like to move? Your colour is green. (A, B, C, or D)");
-
-        //player one
-        // do {
-        // System.out.println("Player 1, which piece would you like to move? (a, b, c, or d)");
-        // p1robot = Robot.parseRobot(in.nextLine()); doesnt work LOL
-        // } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
-        do {
+        System.out.println("Player 1 (green), which piece would you like to move (A, B, C, or D)?");
+        String roboSelected = in.nextLine();
+        System.out.println("Would you like to move north(n), south(s), east(e) or west(w)?");
+        String direction = in.nextLine();
+        
+        
+            //player one
+            // do {
+            // System.out.println("Player 1, which piece would you like to move? (a, b, c, or d)");
+            // p1robot = Robot.parseRobot(in.nextLine()); doesnt work LOL
+            // } while (!p1robot.equals("a") && !p1robot.equals("b") && !p1robot.equals("c") && !p1robot.equals("d"));
+        /*
+            do {
             System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
             p1direction = in.nextLine();
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
-
+        
         if (p1direction == "n") {
 
         }
@@ -82,8 +81,8 @@ public class Main
         do {
             System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
             p1direction = in.nextLine();
-
+            
         } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
-
+        */
     }
 }

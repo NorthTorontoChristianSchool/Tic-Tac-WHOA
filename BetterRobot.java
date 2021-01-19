@@ -2,6 +2,15 @@ import becker.robots.*;
 import java.awt.Color;
 public class BetterRobot extends Robot
 {
+<<<<<<< Updated upstream
+=======
+
+    protected void customizeIntersection(Intersection intersection){
+        //IntersectionIcon(Color.WHITE, Color.PINK);
+    }
+
+    //if karel.getIntersection().countSims() > 1 //move back
+>>>>>>> Stashed changes
     //Constructor
     public BetterRobot(City c, int s, int a, Direction d, int n)
     {
@@ -10,6 +19,10 @@ public class BetterRobot extends Robot
 
     //public methods
     //robots moves - robot originally facing north
+    //public boolean frontIsClear(){
+    // if 
+    // }
+
     public void faceNorth(){
         Direction dFacing = getDirection();
         if (dFacing.equals(Direction.EAST)){
@@ -27,61 +40,61 @@ public class BetterRobot extends Robot
         }
     }
 
-    public boolean moveNorth()
+    public void moveNorth()
     {
         faceNorth();
-        if (super.frontIsClear()){
-            super.move(); //move
-            return true;
-        }
-        else{
-            return false;
-        }
+        //if (super.frontIsClear()){
+        super.move(); //move
+        // return true;
+        // //}
+        // //else{
+        // return false;
+        // //}
     }
 
-    public boolean moveEast()
+    public void moveEast()
     {
         faceNorth();
         for (int i = 0; i < 3; i++) {
             super.turnLeft(); //face East by turning right
         }
-        if (super.frontIsClear()){
-            super.move(); //move
-            return true;
-        }
-        else{
-            return false;
-        }
+        // if (super.frontIsClear()){
+        super.move(); //move
+        // return true;
+        // }
+        // else{
+        // return false;
+        // }
 
     } 
 
-    public boolean moveSouth()
+    public void moveSouth()
     {
         faceNorth();
         for (int i = 0; i < 2; i++) { //face south
             super.turnLeft();
         }
-        if (super.frontIsClear()){
-            super.move(); //move
-            return true;
-        }
-        else{
-            return false;
-        }
+        // if (super.frontIsClear()){
+        super.move(); //move
+        // return true;
+        // }
+        // else{
+        // return false;
+        // }
 
     }   
 
-    public boolean moveWest()
+    public void moveWest()
     {
         faceNorth();
         super.turnLeft(); //face west
-        if (super.frontIsClear()){
-            super.move(); //move
-            return true;
-        }
-        else{
-            return false;
-        }
+        // if (super.frontIsClear()){
+        super.move(); //move
+        // return true;
+        // }
+        // else{
+        // return false;
+        // }
     }
 
     public void victoryDance()

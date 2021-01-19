@@ -9,7 +9,7 @@ public class Test {
         //karel.victoryDance();
         karel.moveNorth();
         if (karel.moveNorth() == false){
-            System.out.print("no");
+            System.out.println("no");
         }
     }
 }

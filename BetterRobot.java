@@ -8,8 +8,6 @@ public class BetterRobot extends Robot
         //IntersectionIcon(Color.WHITE, Color.PINK);
     }
 
-    //if karel.getIntersection().countSims() > 1 //move back
-
     //Constructor
     public BetterRobot(City c, int s, int a, Direction d, int n)
     {
@@ -17,7 +15,7 @@ public class BetterRobot extends Robot
     }   
 
     //public methods
-    
+
     //robots face certain directions
 
     public boolean faceNorth(){
@@ -82,9 +80,9 @@ public class BetterRobot extends Robot
             return false;
         }
     }
-    
+
     //methods to make robots move in certain directions
-    
+
     public boolean moveNorth()
     {
         faceNorth();

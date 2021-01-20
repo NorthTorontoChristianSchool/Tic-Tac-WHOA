@@ -5,14 +5,20 @@ public class Main
 {
     public static void main(String[] args)
     {
-
         //SETTING UP THE BOARD
-
+        
+        Colours board = new Colours(7,7);
+        Intersection road = new Intersection(board,7,7);
+        board.setFrameTitle("Game");
         Scanner in = new Scanner(System.in);
 
         //creating the walls of the board game
+<<<<<<< Updated upstream
         City board = new City(6,6);
         board.setFrameTitle("Game");
+=======
+
+>>>>>>> Stashed changes
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);
         }
@@ -25,13 +31,7 @@ public class Main
         for (int i=1; i<=4; i++){
             Wall rightWalls = new Wall (board,i,4,Direction.EAST);
         }
-
-        //COLOURS OF THE BOARD
-        Intersection road = new Intersection(board,7,7);
-        //inherit from the city class and customize intersection
-        //road.colorRoads(Color.BLUE);
-        //IntersectionIcon hello = new IntersectionIcon(Color.BLUE,Color.RED);
-
+        
         //PUTTING ROBOTS ON THE BOARD
         //p1
         Robot A = new Robot(board, 2, 1, Direction.NORTH, 0);

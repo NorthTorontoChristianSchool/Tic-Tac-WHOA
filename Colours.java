@@ -3,9 +3,9 @@ import becker.robots.icons.*;
 import java.awt.Color;
 public class Colours extends City
 {
-
-    public Colours (int s, int a, int ms, int ma, int sizeInt){
-        super(s,a,ms,ma,sizeInt);
+    //streets, ave, 
+    public Colours (int s, int a){
+        super(s,a);
     }
 
     protected void customizeIntersection(Intersection intersection){

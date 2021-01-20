@@ -2,10 +2,6 @@ import becker.robots.*;
 import java.awt.Color;
 public class BetterRobot extends Robot
 {
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
     protected void customizeIntersection(Intersection intersection){
         //IntersectionIcon(Color.WHITE, Color.PINK);

@@ -3,7 +3,7 @@ import becker.robots.icons.*;
 import java.awt.Color;
 public class Colours extends City
 {
-    //streets, ave, 
+    //streets, ave
     public Colours (int s, int a){
         super(s,a);
     }

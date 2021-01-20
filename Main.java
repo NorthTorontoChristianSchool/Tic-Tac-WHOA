@@ -11,14 +11,9 @@ public class Main
         Intersection road = new Intersection(board,7,7);
         board.setFrameTitle("Game");
         Scanner in = new Scanner(System.in);
-
-        //creating the walls of the board game
-<<<<<<< Updated upstream
-        City board = new City(6,6);
         board.setFrameTitle("Game");
-=======
-
->>>>>>> Stashed changes
+        
+        //creating the walls of the board game
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);
         }

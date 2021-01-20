@@ -1,18 +1,23 @@
 import becker.robots.*;
 import java.util.*; 
 import java.awt.Color;
+import becker.robots.icons.*;
 public class Main
 {
     public static void main(String[] args)
     {
         //SETTING UP THE BOARD
 
-        Colours board = new Colours(7,7);
-        Intersection road = new Intersection(board,7,7);
-        board.setFrameTitle("Game");
-
+        for (int i=0;i<=25;i++){//clearing the screen
+        System.out.println("");
+        }
+        System.out.println("Welcome to Epic Board Game! Please press start.");
+        Colours board = new Colours(6,6);
         Scanner in = new Scanner(System.in);
-
+        board.setFrameTitle("Game");
+        
+        //RobotIcon robo = new RobotIcon(Color.BLUE, 0.8);
+        
         //creating the walls of the board game
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);

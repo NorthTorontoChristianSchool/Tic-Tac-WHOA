@@ -7,6 +7,7 @@ public class BetterRobot extends Robot
     protected void customizeIntersection(Intersection intersection){
         //IntersectionIcon(Color.WHITE, Color.PINK);
     }
+    //if karel.getIntersection().countSims() > 1 //move back
 
     //Constructor
     public BetterRobot(City c, int s, int a, Direction d, int n)

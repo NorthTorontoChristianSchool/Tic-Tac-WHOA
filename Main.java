@@ -6,13 +6,13 @@ public class Main
     public static void main(String[] args)
     {
         //SETTING UP THE BOARD
-        
-        Colours board = new Colours(7,7);
-        Intersection road = new Intersection(board,7,7);
-        board.setFrameTitle("Game");
+
+        Colours board = new Colours(6,6);
+        //Intersection road = new Intersection(board,7,7);
+        //board.setFrameTitle("Game");
         Scanner in = new Scanner(System.in);
         board.setFrameTitle("Game");
-        
+
         //creating the walls of the board game
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);
@@ -26,7 +26,7 @@ public class Main
         for (int i=1; i<=4; i++){
             Wall rightWalls = new Wall (board,i,4,Direction.EAST);
         }
-        
+
         //PUTTING ROBOTS ON THE BOARD
         //p1
         BetterRobot A = new BetterRobot(board, 2, 1, Direction.NORTH, 0);
@@ -59,71 +59,152 @@ public class Main
         Direction directionMoving;
         BetterRobot robotMoving = A; //made it equal A because later it said the variable hadn't been initialized
         int robotsAround; 
+        boolean loop = true;
+        
+
 
         //player one
-        do {
-            System.out.println("Player 1 (green), which piece would you like to move? (A, B, C, or D)");
-            p1robot = in.nextLine();
-        } while (!p1robot.equals("A") && !p1robot.equals("B") && !p1robot.equals("C") && !p1robot.equals("D"));
+        do{
 
-        do {
-            System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
-            p1direction = in.nextLine();
+            do {
+                System.out.println("Player 1 (green), which piece would you like to move? (A, B, C, or D)");
+                p1robot = in.nextLine();
+            } while (!p1robot.equals("A") && !p1robot.equals("B") && !p1robot.equals("C") && !p1robot.equals("D"));
 
-        } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
+            do {
+                System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
+                p1direction = in.nextLine();
 
-        //figure out which robot was chosen by player 1
-        for (int i = 0; i<4; i++){
-            if (strNames[i].equals(p1robot)){
-                robotMoving = roboNames[i];
+            } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
+
+            //figure out which robot was chosen by player 1
+            for (int i = 0; i<4; i++){
+                if (strNames[i].equals(p1robot)){
+                    robotMoving = roboNames[i];
+                }
             }
-        }
 
-        if (p1direction.equals("n")){
-            //directionMoving = Direction.NORTH;
-            robotsAround = robotMoving.getIntersection().getNeighbor(Direction.NORTH).countSims(IPredicate.anyRobot);
-            if (robotsAround>0 || robotMoving.frontIsClear() == false) { //if robots/wall is blocking the way
-                System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+            if (p1direction.equals("n")){
+                //directionMoving = Direction.NORTH;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.NORTH).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 ||robotMoving.moveNorth()==false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveNorth();
+                    loop = true;
+                }
             }
-            else {robotMoving.moveNorth();}
-        }
-        else if (p1direction.equals("s")){
-            //directionMoving = Direction.SOUTH;
-            robotsAround = robotMoving.getIntersection().getNeighbor(Direction.SOUTH).countSims(IPredicate.anyRobot);
-            if (robotsAround>0 || robotMoving.frontIsClear() == false) { //if robots/wall is blocking the way
-                System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+            else if (p1direction.equals("s")){
+                //directionMoving = Direction.SOUTH;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.SOUTH).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 ||robotMoving.moveSouth()==false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveSouth();
+                    loop = true;
+                }
             }
-            else {robotMoving.moveSouth();}
-        }
-        else if (p1direction.equals("e")){
-            //directionMoving = Direction.EAST;
-            robotsAround = robotMoving.getIntersection().getNeighbor(Direction.EAST).countSims(IPredicate.anyRobot);
-            if (robotsAround>0 || robotMoving.frontIsClear() == false) { //if robots/wall is blocking the way
-                System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+            else if (p1direction.equals("e")){
+                //directionMoving = Direction.EAST;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.EAST).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 || robotMoving.moveEast()==false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveEast();
+                    loop = true;
+                }
             }
-            else {robotMoving.moveEast();}
-        }
-        else { //when choice is west
-            //directionMoving = Direction.WEST;
-            robotsAround = robotMoving.getIntersection().getNeighbor(Direction.WEST).countSims(IPredicate.anyRobot);
-            if (robotsAround>0 || robotMoving.frontIsClear() == false) { //if robots/wall is blocking the way
-                System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+            else { //when choice is west
+                //directionMoving = Direction.WEST;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.WEST).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 || robotMoving.moveWest() == false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveWest();
+                    loop = true;
+                }
             }
-            else {robotMoving.moveWest();}
-        }
 
-        //player two
-        do {
-            System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
-            p1direction = in.nextLine();
-        } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
+        } while (loop == false);
 
-        do {
-            System.out.println("Player 1 (green), which piece would you like to move? (E, F, G, or H)");
-            p1robot = in.nextLine();
-        } while (!p1robot.equals("E") && !p1robot.equals("F") && !p1robot.equals("G") && !p1robot.equals("H"));
+        //player 2
+        do{
+            do {
+                System.out.println("Player 2 (orange), which piece would you like to move? (E, F, G, or H)");
+                p1robot = in.nextLine();
+            } while (!p1robot.equals("E") && !p1robot.equals("F") && !p1robot.equals("G") && !p1robot.equals("H"));
 
-        
+            do {
+                System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
+                p1direction = in.nextLine();
+
+            } while (!p1direction.equals("n") && !p1direction.equals("s") && !p1direction.equals("e") && !p1direction.equals("w"));
+
+            //figure out which robot was chosen by player 2
+            for (int i=4; i<8; i++){
+                if (strNames[i].equals(p1robot)){
+                    robotMoving = roboNames[i];
+                }
+            }
+
+            if (p1direction.equals("n")){
+                //directionMoving = Direction.NORTH;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.NORTH).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 ||robotMoving.moveNorth()==false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveNorth();
+                    loop = true;
+                }
+            }
+            else if (p1direction.equals("s")){
+                //directionMoving = Direction.SOUTH;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.SOUTH).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 ||robotMoving.moveSouth()==false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveSouth();
+                    loop = true;
+                }
+            }
+            else if (p1direction.equals("e")){
+                //directionMoving = Direction.EAST;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.EAST).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 || robotMoving.moveEast()==false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveEast();
+                    loop = true;
+                }
+            }
+            else { //when choice is west
+                //directionMoving = Direction.WEST;
+                robotsAround = robotMoving.getIntersection().getNeighbor(Direction.WEST).countSims(IPredicate.anyRobot);
+                if (robotsAround>0 || robotMoving.moveWest() == false) { //if robots/wall is blocking the way
+                    System.out.println("You cannot make that move, please pick again"); //need to make the move start again from here
+                    loop = false;
+                }
+                else {
+                    //robotMoving.moveWest();
+                    loop = true;
+                }
+            }
+
+        } while (loop == false);
     }
 }
 

@@ -17,9 +17,10 @@ public class BetterRobot extends Robot
     }   
 
     //public methods
-    //robots moves - robot originally facing north
+    
+    //robots face certain directions
 
-    public void faceNorth(){
+    public boolean faceNorth(){
         Direction dFacing = getDirection();
         if (dFacing.equals(Direction.EAST)){
             super.turnLeft();
@@ -29,73 +30,114 @@ public class BetterRobot extends Robot
                 super.turnLeft();
             }
         }
-        if (dFacing.equals(Direction.EAST)){
+        if (dFacing.equals(Direction.WEST)){
             for (int i = 0; i < 3; i++) { //face north again
                 super.turnLeft();
             }
         }
-    }
-
-    public void moveNorth()
-    {
-        faceNorth();
-        super.move();
-        // if (super.frontIsClear()){
-        // super.move(); //move
-        // return true;
-        // }
-
-        // else{
-        // return false;
-        // }
-    }
-
-    public void moveEast()
-    {
-        faceNorth();
-        for (int i = 0; i < 3; i++) {
-            super.turnLeft(); //face East by turning right
+        if (super.frontIsClear()){
+            return true;
         }
-        super.move();
-        // if (super.frontIsClear()){
-        // super.move(); //move
-        // return true;
-        // }
+        else{
+            return false;
+        }
+    }
 
-        // else{
-        // return false;
-        // }
-    } 
-
-    public void moveSouth()
+    public boolean faceEast()
     {
         faceNorth();
-        for (int i = 0; i < 2; i++) { //face south
+        for(int i=0; i<3;i++){
             super.turnLeft();
         }
-        super.move();
-        // if (super.frontIsClear()){
-        // super.move(); //move
-        // return true;
-        // }
+        if (super.frontIsClear()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
-        // else{
-        // return false;
-        // }
-    }   
-
-    public void moveWest()
+    public boolean faceSouth()
     {
         faceNorth();
-        super.turnLeft(); //face west
-        super.move();
-        // if (super.frontIsClear()){
-        // super.move(); //move
-        // return true;
-        // }
-        // else{
-        // return false;
-        // }
+        for(int i=0; i<2;i++){
+            super.turnLeft();
+        }
+        if (super.frontIsClear()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean faceWest()
+    {
+        faceNorth();
+        super.turnLeft();
+        if (super.frontIsClear()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    //methods to make robots move in certain directions
+    
+    public boolean moveNorth()
+    {
+        faceNorth();
+        //super.move();
+        if (super.frontIsClear()){
+            super.move(); //move
+            return true;
+        }
+
+        else{
+            return false;
+        }
+    }
+
+    public boolean moveEast()
+    {
+        faceEast();
+        //super.move();
+        if (super.frontIsClear()){
+            super.move(); //move
+            return true;
+        }
+
+        else{
+            return false;
+        }
+    } 
+
+    public boolean moveSouth()
+    {
+        faceSouth();
+        //super.move();
+        if (super.frontIsClear()){
+            super.move(); //move
+            return true;
+        }
+
+        else{
+            return false;
+        }
+    }   
+
+    public boolean moveWest()
+    {
+        faceWest();
+        //super.move();
+        if (super.frontIsClear()){
+            super.move(); //move
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void victoryDance()

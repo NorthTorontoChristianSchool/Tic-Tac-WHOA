@@ -2,6 +2,7 @@
 dependency1.from=Test
 dependency1.to=BetterRobot
 dependency1.type=UsesDependency
+<<<<<<< Updated upstream
 dependency2.from=Main
 dependency2.to=Colours
 dependency2.type=UsesDependency
@@ -20,6 +21,23 @@ package.editor.y=0
 package.frame.height=694
 package.frame.width=1294
 package.numDependencies=2
+=======
+editor.fx.0.height=900
+editor.fx.0.width=1440
+editor.fx.0.x=0
+editor.fx.0.y=0
+objectbench.height=124
+objectbench.width=693
+package.divider.horizontal=0.5603174603174603
+package.divider.vertical=0.8267195767195767
+package.editor.height=618
+package.editor.width=599
+package.editor.x=5
+package.editor.y=23
+package.frame.height=814
+package.frame.width=717
+package.numDependencies=1
+>>>>>>> Stashed changes
 package.numTargets=4
 package.showExtends=true
 package.showUses=true

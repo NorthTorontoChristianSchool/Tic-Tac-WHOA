@@ -1,3 +1,4 @@
+
 import becker.robots.*;
 import java.awt.Color;
 public class BetterRobot extends Robot
@@ -38,13 +39,15 @@ public class BetterRobot extends Robot
     public void moveNorth()
     {
         faceNorth();
-        //if (super.frontIsClear()){
-        super.move(); //move
+        super.move();
+        // if (super.frontIsClear()){
+        // super.move(); //move
         // return true;
-        // //}
-        // //else{
+        // }
+
+        // else{
         // return false;
-        // //}
+        // }
     }
 
     public void moveEast()
@@ -53,14 +56,15 @@ public class BetterRobot extends Robot
         for (int i = 0; i < 3; i++) {
             super.turnLeft(); //face East by turning right
         }
+        super.move();
         // if (super.frontIsClear()){
-        super.move(); //move
+        // super.move(); //move
         // return true;
         // }
+
         // else{
         // return false;
         // }
-
     } 
 
     public void moveSouth()
@@ -69,22 +73,24 @@ public class BetterRobot extends Robot
         for (int i = 0; i < 2; i++) { //face south
             super.turnLeft();
         }
+        super.move();
         // if (super.frontIsClear()){
-        super.move(); //move
+        // super.move(); //move
         // return true;
         // }
+
         // else{
         // return false;
         // }
-
     }   
 
     public void moveWest()
     {
         faceNorth();
         super.turnLeft(); //face west
+        super.move();
         // if (super.frontIsClear()){
-        super.move(); //move
+        // super.move(); //move
         // return true;
         // }
         // else{

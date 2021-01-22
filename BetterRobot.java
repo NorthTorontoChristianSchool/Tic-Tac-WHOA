@@ -2,8 +2,6 @@ import becker.robots.*;
 import java.awt.Color;
 public class BetterRobot extends Robot
 {
-    //if karel.getIntersection().countSims() > 1 //move back
-
     //Constructor
     public BetterRobot(City c, int s, int a, Direction d, int n)
     {
@@ -52,8 +50,9 @@ public class BetterRobot extends Robot
         super.turnLeft();
     }
 
+    
     //methods to make robots move in certain directions
-
+    //overloads the move() method so that you can specify the direction you move
     public boolean move(String d)
     {
         if (d.equals("N")){
@@ -76,58 +75,7 @@ public class BetterRobot extends Robot
         return false;     
     }
 
-    public boolean moveNorth()
-    {
-        faceNorth();
-        if (super.frontIsClear()){
-            super.move();
-            return true;
-        }
-
-        else{
-            return false;
-        }
-    }
-
-    public boolean moveEast()
-    {
-        faceEast();
-        if (super.frontIsClear()){
-            super.move();
-            return true;
-        }
-
-        else{
-            return false;
-        }
-    } 
-
-    public boolean moveSouth()
-    {
-        faceSouth();
-        if (super.frontIsClear()){
-            super.move();
-            return true;
-        }
-
-        else{
-            return false;
-        }
-    }   
-
-    public boolean moveWest()
-    {
-        faceWest();
-        if (super.frontIsClear()){
-            super.move();
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    //dances
+    //victory dance... I really like it
     public void victoryDance()
     {
         super.setSpeed(10);
@@ -140,7 +88,10 @@ public class BetterRobot extends Robot
         }
 
     }
-
+    
+    //loser dance :(
+    //overrides the breakRobot() method for something much more useful... 
+    //the robots spin around and break 
     public void breakRobot()
     {
         super.setSpeed(10);
@@ -153,5 +104,4 @@ public class BetterRobot extends Robot
             }
         }
     }
-
 }      

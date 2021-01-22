@@ -1,7 +1,6 @@
 import becker.robots.*;
 import java.util.*; 
 import java.awt.Color;
-import java.awt.geom.Rectangle2D;
 
 public class Main
 {
@@ -13,6 +12,7 @@ public class Main
         for (int i=0;i<=25;i++){//clearing the screen
             System.out.println("");
         }
+        //welcoming the players
         System.out.println("Welcome to Epic Board Game! Please press start.");
         System.out.println("The first player who lines up three of their pieces wins!");
         Colours board = new Colours(6,6);
@@ -44,7 +44,7 @@ public class Main
         BetterRobot F = new BetterRobot(board, 3, 1, Direction.NORTH, 0);
         BetterRobot G = new BetterRobot(board, 2, 4, Direction.NORTH, 0);
         BetterRobot H = new BetterRobot(board, 4, 4, Direction.NORTH, 0);
-
+        //giving them names
         BetterRobot[] roboNames = {A,B,C,D,E,F,G,H};
         String[] strNames = {"A","B","C","D","E","F","G","H"};
         int numsList[][] = { {0,10,10,1},{1,10,10,0},{0,10,10,1},{1,10,10,0} };
@@ -63,20 +63,18 @@ public class Main
         for(int i=0; i<8; i++){
             roboNames[i].setSpeed(20);
         }
+        
+        //creating a bunch of variables we used
         String boardList[][] = {{"E", "", "", "C"},{"A", "", "", "G"},{"F", "", "", "D"},{"B", "", "", "H"}}; //1st [] is for group, 2nd [] is for spot in group
-        //Get and validate the user's choice of where to move
         String robot, direction;
         Direction directionMoving, roboDir;
-
         BetterRobot robotMoving = A;
-        int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0, winningNum=10;
-        int rowMoved = 0, columnMoved = 0, rowSum=0, columnSum=0;
+        int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0, winningNum=10, rowMoved = 0, columnMoved = 0, rowSum=0, columnSum=0;
         boolean loop = true, win = false;
 
-        //for(int rounds = 1; rounds < 1000; rounds++){ //note for Gelila: if nothing happens in the rounds loop, we can just use the moves loop and use modulus
         for(int moves = 0; moves < 1000; moves++){ //move 1 by player 1, move 2 by player 2
             do{
-                //player one
+                //asks player one about what theyre moving and where
                 if(moves % 2 == 0){
                     do {
                         System.out.println("Player 1 (green), which piece would you like to move? (A, B, C, or D)");
@@ -90,7 +88,7 @@ public class Main
                     } while (!direction.equals("N") && !direction.equals("S") && !direction.equals("E") && !direction.equals("W"));
                 }
 
-                //player two
+                //asks player two about what theyre moving and where
                 else{
                     do {
                         System.out.println("Player 2 (orange), which piece would you like to move? (E, F, G, or H)");
@@ -127,11 +125,12 @@ public class Main
                 
                 //checks if the desired direction is clear
                 robotsAround = robotMoving.getIntersection().getNeighbor(roboDir).countSims(IPredicate.anyRobot);
-                if (robotsAround>0 ||robotMoving.move(direction)==false) { //if robots/wall is blocking the way
-                        System.out.println("You cannot make that move, please pick again"); //make the move start again from here
-                        loop = false;
+                if (robotsAround>0 ||robotMoving.move(direction)==false) { 
+                        System.out.println("You cannot make that move, please pick again"); 
+                        loop = false;//makes the loop run again to ask the player to choose again
                     }
                 
+                //if the direction was clear, it had already moved; variables change to keep track of movement
                 else if (direction.equals("N")){
                         loop = true;
                         upOrDown = -1;
@@ -166,6 +165,7 @@ public class Main
                         else if( boardList[j][k] == "E"|| boardList[j][k] =="F"||boardList[j][k] =="G"||boardList[j][k] =="H" ){ 
                             numsList[j+upOrDown][k+rightOrLeft] = 0;
                         }
+                        
                         numsList[j][k] = 10;
 
                         rowMoved = j+upOrDown;

@@ -1,4 +1,3 @@
-
 import becker.robots.*;
 import java.awt.Color;
 public class BetterRobot extends Robot
@@ -35,10 +34,10 @@ public class BetterRobot extends Robot
             }
         }
         // if (super.frontIsClear()){
-            // return true;
+        // return true;
         // }
         // else{
-            // return false;
+        // return false;
         // }
     }
 
@@ -49,10 +48,10 @@ public class BetterRobot extends Robot
             super.turnLeft();
         }
         // if (super.frontIsClear()){
-            // return true;
+        // return true;
         // }
         // else{
-            // return false;
+        // return false;
         // }
     }
 
@@ -63,10 +62,10 @@ public class BetterRobot extends Robot
             super.turnLeft();
         }
         // if (super.frontIsClear()){
-            // return true;
+        // return true;
         // }
         // else{
-            // return false;
+        // return false;
         // }
     }
 
@@ -75,10 +74,10 @@ public class BetterRobot extends Robot
         faceNorth();
         super.turnLeft();
         // if (super.frontIsClear()){
-            // return true;
+        // return true;
         // }
         // else{
-            // return false;
+        // return false;
         // }
     }
 
@@ -101,18 +100,17 @@ public class BetterRobot extends Robot
         else if(d=="W"){
             faceWest();
         }
-        
+
         if (super.frontIsClear()){
-                super.move(); //move
-                return true;
-            }
-            return false;     
+            super.move(); //move
+            return true;
+        }
+        return false;     
     }
 
     public boolean moveNorth()
     {
         faceNorth();
-        //super.move();
         if (super.frontIsClear()){
             super.move(); //move
             return true;
@@ -126,7 +124,6 @@ public class BetterRobot extends Robot
     public boolean moveEast()
     {
         faceEast();
-        //super.move();
         if (super.frontIsClear()){
             super.move(); //move
             return true;
@@ -140,7 +137,6 @@ public class BetterRobot extends Robot
     public boolean moveSouth()
     {
         faceSouth();
-        //super.move();
         if (super.frontIsClear()){
             super.move(); //move
             return true;
@@ -154,7 +150,6 @@ public class BetterRobot extends Robot
     public boolean moveWest()
     {
         faceWest();
-        //super.move();
         if (super.frontIsClear()){
             super.move(); //move
             return true;
@@ -164,14 +159,29 @@ public class BetterRobot extends Robot
         }
     }
 
+    //dances
+
     public void victoryDance()
     {
-        super.setSpeed(5);
-        Color[] colourList = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK,};
+        super.setSpeed(10);
+        Color[] colourList = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.PINK, Color.BLUE,};
         for (int i = 0; i < 12; i++) { 
             super.turnLeft();
             super.setColor(colourList[i]);
         }
+
     }
+
+    public void breakRobot()
+    {
+        super.setSpeed(10);
+        Color[] colourList = {Color.RED, Color.BLACK};
+        for (int a = 0; a < 6; a++){
+            for (int i = 0; i < 2; i++) { 
+                super.turnLeft();
+                super.setColor(colourList[i]);
+            }
+        }
+    }
+
 }      
- 

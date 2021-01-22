@@ -14,10 +14,11 @@ public class Main
             System.out.println("");
         }
         System.out.println("Welcome to Epic Board Game! Please press start.");
+        System.out.println("The first player who lines up three of their pieces wins!");
         Colours board = new Colours(6,6);
         Scanner in = new Scanner(System.in);
         board.setFrameTitle("Game");
-        
+
         //creating the walls of the board game
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);
@@ -59,7 +60,10 @@ public class Main
             roboNames[i].setColor(Color.ORANGE);
             roboNames[i].setLabel(strNames[i]);
         }
-
+        //setting speed
+        for(int i=0; i<8; i++){
+            roboNames[i].setSpeed(5);
+        }
         String boardList[][] = {{"E", "", "", "C"},{"A", "", "", "G"},{"F", "", "", "D"},{"B", "", "", "H"}}; //1st [] is for group, 2nd [] is for spot in group
         //Get and validate the user's choice of where to move
         String robot, direction;
@@ -69,6 +73,7 @@ public class Main
         int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0, winningNum=10;
         int rowMoved = 0, columnMoved = 0, rowSum=0, columnSum=0;
         boolean loop = true, win = false;
+
 
         for(int rounds = 1; rounds < 1000; rounds++){ //note for Gelila: if nothing happens in the rounds loop, we can just use the moves loop and use modulus
             for(int moves = 1; moves < 3; moves++){ //move 1 by player 1, move 2 by player 2
@@ -111,56 +116,48 @@ public class Main
                     }
 
                     if (direction.equals("N")){
-                        //directionMoving = Direction.NORTH;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.NORTH).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 ||robotMoving.move(direction)==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 ||robotMoving.moveNorth()==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = -1;
                             rightOrLeft = 0;
                         }
                     }
                     else if (direction.equals("S")){
-                        //directionMoving = Direction.SOUTH;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.SOUTH).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 ||robotMoving.move(direction)==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 ||robotMoving.moveSouth()==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = 1;
                             rightOrLeft = 0;
                         }
                     }
                     else if (direction.equals("E")){
-                        //directionMoving = Direction.EAST;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.EAST).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 || robotMoving.move(direction)==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 || robotMoving.moveEast()==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = 0;
                             rightOrLeft = 1;
                         }
                     }
                     else { //when choice is west
-                        //directionMoving = Direction.WEST;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.WEST).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 || robotMoving.move(direction) == false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 || robotMoving.moveWest() == false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = 0;
                             rightOrLeft = -1;
@@ -194,7 +191,7 @@ public class Main
 
                             //end both loops
                             k = 4;
-                            j = 4;//can you use break?
+                            j = 4;
                         }
                     }
                 }
@@ -263,12 +260,31 @@ public class Main
                 //congratulate winner
                 if (winningNum==1){
                     System.out.println("Player 1 Wins!!");
+                    win = true;
+                    for (int i=0; i<4; i++)
+                    {
+                        roboNames[i].victoryDance();
+                    }
+                    for (int i=4; i<8; i++)
+                    {
+                        roboNames[i].breakRobot();
+                    }
+                    System.exit(0);
                 }
                 else if (winningNum==0){
                     System.out.println("Player 2 Wins!!");
+                    win = true;
+                    for (int i=4; i<8; i++)
+                    {
+                        roboNames[i].victoryDance();
+                    }
+                    for (int i=0; i<4; i++)
+                    {
+                        roboNames[i].breakRobot();
+                    }
+                    System.exit(0);
                 }
-                System.out.println(winningNum);
-
+                //System.out.println(winningNum);
 
             }
         }

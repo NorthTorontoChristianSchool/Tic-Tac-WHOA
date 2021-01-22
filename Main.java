@@ -1,7 +1,9 @@
 import becker.robots.*;
 import java.util.*; 
 import java.awt.Color;
-import becker.robots.icons.*;
+//import becker.robots.icons.*;
+import java.awt.geom.Rectangle2D;
+
 public class Main
 {
     public static void main(String[] args)
@@ -15,9 +17,7 @@ public class Main
         Colours board = new Colours(6,6);
         Scanner in = new Scanner(System.in);
         board.setFrameTitle("Game");
-
-        //RobotIcon robo = new RobotIcon(Color.BLUE, 0.8);
-
+        
         //creating the walls of the board game
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);
@@ -113,12 +113,12 @@ public class Main
                     if (direction.equals("N")){
                         //directionMoving = Direction.NORTH;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.NORTH).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 ||robotMoving.moveNorth()==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 ||robotMoving.move(direction)==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            //robotMoving.moveNorth();
+                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = -1;
                             rightOrLeft = 0;
@@ -127,12 +127,12 @@ public class Main
                     else if (direction.equals("S")){
                         //directionMoving = Direction.SOUTH;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.SOUTH).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 ||robotMoving.moveSouth()==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 ||robotMoving.move(direction)==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            //robotMoving.moveSouth();
+                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = 1;
                             rightOrLeft = 0;
@@ -141,12 +141,12 @@ public class Main
                     else if (direction.equals("E")){
                         //directionMoving = Direction.EAST;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.EAST).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 || robotMoving.moveEast()==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 || robotMoving.move(direction)==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            //robotMoving.moveEast();
+                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = 0;
                             rightOrLeft = 1;
@@ -155,12 +155,12 @@ public class Main
                     else { //when choice is west
                         //directionMoving = Direction.WEST;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.WEST).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 || robotMoving.moveWest() == false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 || robotMoving.move(direction) == false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
                         else {
-                            //robotMoving.moveWest();
+                            robotMoving.move(direction);
                             loop = true;
                             upOrDown = 0;
                             rightOrLeft = -1;
@@ -269,47 +269,6 @@ public class Main
                 }
                 System.out.println(winningNum);
 
-                //checks for wins.
-                //10 ways to win; 4 hor, 4 ver, 2 diag
-
-                // if(robotName < 4){//player 1
-                // winningNum = 1;
-                // }
-                // else{//player 2
-                // winningNum = 2;
-                // }
-
-                //winning algorithm
-
-                // //checks diagonals
-                // if (numsList[0][0]==winningNum && numsList[1][1]==winningNum && numsList[2][2]==winningNum && numsList[3][3]==winningNum){
-                // System.out.println("Player "+winningNum+" Wins Diagonally Down!");
-                // win = true;
-                // break;
-                // }
-                // else if (numsList[3][0]==winningNum && numsList[2][1]==winningNum && numsList[1][2]==winningNum && numsList[0][3]==winningNum){
-                // System.out.println("Player "+winningNum+" Wins Diagonally Up!");
-                // win = true;
-                // break;
-                // }
-                // else {
-                // for(int i=0; i<4; i++){
-                // //checks rows
-                // if (numsList[i][0]==winningNum && numsList[i][1]==winningNum && numsList[i][2]==winningNum && numsList[i][3]==winningNum){
-                // System.out.println("Player "+winningNum+" Wins in Row " + (i+1) + "!");
-                // win = true;
-                // break;
-                // }
-                // //checks columns
-                // else if (numsList[0][i]==winningNum && numsList[1][i]==winningNum && numsList[2][i]==winningNum && numsList[3][i]==winningNum){
-                // System.out.println("Player "+winningNum+" Wins in Column " + (i+1) + "!");
-                // win = true;
-                // break;
-                // }
-
-                // }
-                // }
-                //if (win = true){break;}
 
             }
         }

@@ -19,7 +19,7 @@ public class BetterRobot extends Robot
 
     //robots face certain directions
 
-    public boolean faceNorth(){
+    public void faceNorth(){
         Direction dFacing = getDirection();
         if (dFacing.equals(Direction.EAST)){
             super.turnLeft();
@@ -34,55 +34,80 @@ public class BetterRobot extends Robot
                 super.turnLeft();
             }
         }
-        if (super.frontIsClear()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // if (super.frontIsClear()){
+            // return true;
+        // }
+        // else{
+            // return false;
+        // }
     }
 
-    public boolean faceEast()
+    public void faceEast()
     {
         faceNorth();
         for(int i=0; i<3;i++){
             super.turnLeft();
         }
-        if (super.frontIsClear()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // if (super.frontIsClear()){
+            // return true;
+        // }
+        // else{
+            // return false;
+        // }
     }
 
-    public boolean faceSouth()
+    public void faceSouth()
     {
         faceNorth();
         for(int i=0; i<2;i++){
             super.turnLeft();
         }
-        if (super.frontIsClear()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // if (super.frontIsClear()){
+            // return true;
+        // }
+        // else{
+            // return false;
+        // }
     }
 
-    public boolean faceWest()
+    public void faceWest()
     {
         faceNorth();
         super.turnLeft();
-        if (super.frontIsClear()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // if (super.frontIsClear()){
+            // return true;
+        // }
+        // else{
+            // return false;
+        // }
     }
 
     //methods to make robots move in certain directions
+
+    public boolean move(String d)
+    {
+        if (d=="N"){
+            faceNorth();
+        }
+
+        else if(d=="E"){
+            faceEast();
+        }
+
+        else if(d=="S"){
+            faceSouth();
+        }
+
+        else if(d=="W"){
+            faceWest();
+        }
+        
+        if (super.frontIsClear()){
+                super.move(); //move
+                return true;
+            }
+            return false;     
+    }
 
     public boolean moveNorth()
     {

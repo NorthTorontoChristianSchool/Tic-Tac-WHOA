@@ -47,7 +47,6 @@ public class Main
 
         BetterRobot[] roboNames = {A,B,C,D,E,F,G,H};
         String[] strNames = {"A","B","C","D","E","F","G","H"};
-        //int numsList[][] = { {2,0,0,1},{1,0,0,2},{2,0,0,1},{1,0,0,2} };
         int numsList[][] = { {0,10,10,1},{1,10,10,0},{0,10,10,1},{1,10,10,0} };
 
         //p1
@@ -62,7 +61,7 @@ public class Main
         }
         //setting speed
         for(int i=0; i<8; i++){
-            roboNames[i].setSpeed(5);
+            roboNames[i].setSpeed(20);
         }
         String boardList[][] = {{"E", "", "", "C"},{"A", "", "", "G"},{"F", "", "", "D"},{"B", "", "", "H"}}; //1st [] is for group, 2nd [] is for spot in group
         //Get and validate the user's choice of where to move
@@ -74,12 +73,11 @@ public class Main
         int rowMoved = 0, columnMoved = 0, rowSum=0, columnSum=0;
         boolean loop = true, win = false;
 
-
-        for(int rounds = 1; rounds < 1000; rounds++){ //note for Gelila: if nothing happens in the rounds loop, we can just use the moves loop and use modulus
-            for(int moves = 1; moves < 3; moves++){ //move 1 by player 1, move 2 by player 2
+        //for(int rounds = 1; rounds < 1000; rounds++){ //note for Gelila: if nothing happens in the rounds loop, we can just use the moves loop and use modulus
+            for(int moves = 0; moves < 1000; moves++){ //move 1 by player 1, move 2 by player 2
                 do{
                     //player one
-                    if(moves == 1){
+                    if(moves % 2 == 0){
                         do {
                             System.out.println("Player 1 (green), which piece would you like to move? (A, B, C, or D)");
                             robot = in.nextLine();
@@ -239,7 +237,7 @@ public class Main
                         winningNum = numsList[1][1];
                         System.out.println("middle diagonal left win");
                     }
-                    else if ((numsList[2][0]==numsList[1][1] && numsList[1][1] == numsList[0][2] && numsList[1][1] != 10) || (numsList[3][1]==numsList[2][2] && numsList[2][2] == numsList[1][3] && numsList[1][1] != 10)){
+                    else if ((numsList[2][0]==numsList[1][1] && numsList[1][1] == numsList[0][2] && numsList[1][1] != 10) || (numsList[3][1]==numsList[2][2] && numsList[2][2] == numsList[1][3] && numsList[2][2] != 10)){
                         winningNum = numsList[rowMoved][columnMoved];
                         System.out.println("side diagonal right win");
                     }    
@@ -285,8 +283,7 @@ public class Main
                     System.exit(0);
                 }
                 //System.out.println(winningNum);
-
             }
-        }
+        //}
     }
 }

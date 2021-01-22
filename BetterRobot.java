@@ -128,11 +128,11 @@ public class BetterRobot extends Robot
     }
 
     //dances
-
     public void victoryDance()
     {
         super.setSpeed(10);
         Color[] colourList = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.PINK, Color.BLUE,};
+        faceNorth();
         for (int i = 0; i < 12; i++) { 
             super.turnLeft();
             super.setColor(colourList[i]);
@@ -144,6 +144,7 @@ public class BetterRobot extends Robot
     {
         super.setSpeed(10);
         Color[] colourList = {Color.RED, Color.BLACK};
+        faceSouth();
         for (int a = 0; a < 6; a++){
             for (int i = 0; i < 2; i++) { 
                 super.turnLeft();

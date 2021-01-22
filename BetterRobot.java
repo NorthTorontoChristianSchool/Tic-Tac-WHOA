@@ -54,7 +54,7 @@ public class BetterRobot extends Robot
 
     //methods to make robots move in certain directions
 
-    public boolean move(String d)
+    public boolean move(String d)       //MR V says you should use the .equals() method to compare Strings more reliably.  See if that fixes the issue!
     {
         if (d=="N"){
             faceNorth();

@@ -208,46 +208,55 @@ public class Main
                 for(int k=0; k<4; k++){
                     rowSum += numsList[rowMoved][k];
                 }
+                System.out.println("row sum is " + rowSum);
+                System.out.println("column sum is " + columnSum);
 
                 if(columnSum==13){
                     if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))){
                         winningNum = 1;
+                        System.out.println("column win");
                     }
                 }
                 else if(columnSum ==10){
                     if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))){
                         winningNum = 0;
+                        System.out.println("column win");
                     }
                 }
                 else if(rowSum==13){
                     if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))){
                         winningNum = 1;
+                        System.out.println("row win");
                     }
                 }
                 else if(rowSum ==10){ 
                     if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==0))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==0))){
                         winningNum = 0;
+                        System.out.println("row win");
                     }
                 }
-                
+
                 //diagonal win
                 else if(rowMoved==columnMoved || java.lang.Math.abs(rowMoved-columnMoved) == 2){ 
                     if((numsList[0][0]==numsList[1][1] && numsList[1][1] == numsList[2][2]) || (numsList[3][3]==numsList[1][1] && numsList[1][1] == numsList[2][2])) {
                         winningNum = numsList[1][1];
+                        System.out.println("middle diagonal left win");
                     }
-                    else if ((numsList[2][0]==numsList[1][1] && numsList[1][1] == numsList[0][2]) || (numsList[3][1]==numsList[2][2] && numsList[2][2] == numsList[1][3])){
+                    else if ((numsList[2][0]==numsList[1][1] && numsList[1][1] == numsList[0][2] && numsList[1][1] != 10) || (numsList[3][1]==numsList[2][2] && numsList[2][2] == numsList[1][3] && numsList[1][1] != 10)){
                         winningNum = numsList[rowMoved][columnMoved];
+                        System.out.println("side diagonal right win");
                     }    
                 }
                 else if (rowMoved+columnMoved == 3){
-                    
-                     if((numsList[3][0]==numsList[2][1] && numsList[2][1] == numsList[1][2]) || (numsList[0][3]==numsList[2][1] && numsList[2][1] == numsList[1][2])){
+                    if((numsList[3][0]==numsList[2][1] && numsList[2][1] == numsList[1][2])  || (numsList[0][3]==numsList[2][1] && numsList[2][1] == numsList[1][2])){
                         winningNum = numsList[2][1];
+                        System.out.println("middle diagonal right win");
                     }
                 }
                 else if (java.lang.Math.abs(rowMoved-columnMoved) == 1){
-                     if((numsList[1][0]==numsList[2][1] && numsList[2][1] == numsList[3][2]) || (numsList[0][1]==numsList[1][2] && numsList[1][2] == numsList[2][3])){
+                    if((numsList[1][0]==numsList[2][1] && numsList[2][1] == numsList[3][2] && numsList[2][1] != 10) || (numsList[0][1]==numsList[1][2] && numsList[1][2] == numsList[2][3] && numsList[1][2] != 10)){
                         winningNum = numsList[2][1];
+                        System.out.println("side diagonal left win");
                     }
                 }
 

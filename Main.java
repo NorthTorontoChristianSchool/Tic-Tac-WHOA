@@ -46,6 +46,8 @@ public class Main
 
         BetterRobot[] roboNames = {A,B,C,D,E,F,G,H};
         String[] strNames = {"A","B","C","D","E","F","G","H"};
+        int numsList[][] = { {2,0,0,1},{1,0,0,2},{2,0,0,1},{1,0,0,2} };
+
         //p1
         for (int i=0; i<=3; i++){
             roboNames[i].setColor(Color.GREEN);
@@ -62,8 +64,8 @@ public class Main
         String robot, direction;
         Direction directionMoving;
         BetterRobot robotMoving = A; //made it equal A because later it said the variable hadn't been initialized
-        int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0; 
-        boolean loop = true;
+        int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0, winningNum=0; 
+        boolean loop = true, win = false;
 
         for(int rounds = 1; rounds < 1000; rounds++){ //note for Gelila: if nothing happens in the rounds loop, we can just use the moves loop and use modulus
             for(int moves = 1; moves < 3; moves++){ //move 1 by player 1, move 2 by player 2
@@ -76,10 +78,10 @@ public class Main
                         } while (!robot.equals("A") && !robot.equals("B") && !robot.equals("C") && !robot.equals("D"));
 
                         do {
-                            System.out.println("Player 1, would you like to move north(n), south(s), east(e) or west(w)?");
+                            System.out.println("Player 1, would you like to move north(N), south(S), east(E) or west(W)?");
                             direction = in.nextLine();
 
-                        } while (!direction.equals("n") && !direction.equals("s") && !direction.equals("e") && !direction.equals("w"));
+                        } while (!direction.equals("N") && !direction.equals("S") && !direction.equals("E") && !direction.equals("W"));
                     }
 
                     //player two
@@ -90,10 +92,10 @@ public class Main
                         } while (!robot.equals("E") && !robot.equals("F") && !robot.equals("G") && !robot.equals("H"));
 
                         do {
-                            System.out.println("Player 2, would you like to move north(n), south(s), east(e) or west(w)?");
+                            System.out.println("Player 2, would you like to move north(N), south(S), east(E) or west(W)?");
                             direction = in.nextLine();
 
-                        } while (!direction.equals("n") && !direction.equals("s") && !direction.equals("e") && !direction.equals("w"));
+                        } while (!direction.equals("N") && !direction.equals("S") && !direction.equals("E") && !direction.equals("W"));
                     }
 
                     //figure out which robot was chosen
@@ -105,7 +107,7 @@ public class Main
                         }
                     }
 
-                    if (direction.equals("n")){
+                    if (direction.equals("N")){
                         //directionMoving = Direction.NORTH;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.NORTH).countSims(IPredicate.anyRobot);
                         if (robotsAround>0 ||robotMoving.moveNorth()==false) { //if robots/wall is blocking the way
@@ -119,7 +121,7 @@ public class Main
                             rightOrLeft = 0;
                         }
                     }
-                    else if (direction.equals("s")){
+                    else if (direction.equals("S")){
                         //directionMoving = Direction.SOUTH;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.SOUTH).countSims(IPredicate.anyRobot);
                         if (robotsAround>0 ||robotMoving.moveSouth()==false) { //if robots/wall is blocking the way
@@ -133,7 +135,7 @@ public class Main
                             rightOrLeft = 0;
                         }
                     }
-                    else if (direction.equals("e")){
+                    else if (direction.equals("E")){
                         //directionMoving = Direction.EAST;
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.EAST).countSims(IPredicate.anyRobot);
                         if (robotsAround>0 || robotMoving.moveEast()==false) { //if robots/wall is blocking the way
@@ -162,8 +164,6 @@ public class Main
                         }
                     }   
                 } while (loop == false);
-
-                int numsList[][] = { {2,0,0,1},{1,0,0,2},{2,0,0,1},{1,0,0,2} };
 
                 //make the moves within the list
                 for (int j = 0; j<boardList.length; j++){ //traverse through board list to locate the robot chosen
@@ -195,7 +195,7 @@ public class Main
 
                 //checks for wins.
                 //10 ways to win; 4 hor, 4 ver, 2 diag
-                int winningNum=0;
+                
                 if(robotName < 4){//player 1
                     winningNum = 1;
                 }
@@ -205,12 +205,15 @@ public class Main
 
                 //winning algorithm
                 
+                //checks diagonals
                 if (numsList[0][0]==winningNum && numsList[1][1]==winningNum && numsList[2][2]==winningNum && numsList[3][3]==winningNum){
                     System.out.println("Player "+winningNum+" Wins Diagonally Down!");
+                    win = true;
                     break;
                 }
                 else if (numsList[3][0]==winningNum && numsList[2][1]==winningNum && numsList[1][2]==winningNum && numsList[0][3]==winningNum){
                     System.out.println("Player "+winningNum+" Wins Diagonally Up!");
+                    win = true;
                     break;
                 }
                 else {
@@ -218,16 +221,20 @@ public class Main
                         //checks rows
                         if (numsList[i][0]==winningNum && numsList[i][1]==winningNum && numsList[i][2]==winningNum && numsList[i][3]==winningNum){
                             System.out.println("Player "+winningNum+" Wins in Row " + (i+1) + "!");
+                            win = true;
                             break;
                         }
                         //checks columns
                         else if (numsList[0][i]==winningNum && numsList[1][i]==winningNum && numsList[2][i]==winningNum && numsList[3][i]==winningNum){
                             System.out.println("Player "+winningNum+" Wins in Column " + (i+1) + "!");
+                            win = true;
                             break;
                         }
-                        //checks diagonals
+                        
                     }
                 }
+                
+                //if (win = true){break;}
             }
         }
     }

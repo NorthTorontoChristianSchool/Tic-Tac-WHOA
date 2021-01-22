@@ -59,19 +59,15 @@ public class BetterRobot extends Robot
         if (d=="N"){
             faceNorth();
         }
-
         else if(d=="E"){
             faceEast();
         }
-
         else if(d=="S"){
             faceSouth();
         }
-
         else if(d=="W"){
             faceWest();
         }
-
         if (super.frontIsClear()){
             super.move(); //move
             return true;
@@ -83,7 +79,7 @@ public class BetterRobot extends Robot
     {
         faceNorth();
         if (super.frontIsClear()){
-            super.move(); //move
+            super.move();
             return true;
         }
 
@@ -96,7 +92,7 @@ public class BetterRobot extends Robot
     {
         faceEast();
         if (super.frontIsClear()){
-            super.move(); //move
+            super.move();
             return true;
         }
 
@@ -109,7 +105,7 @@ public class BetterRobot extends Robot
     {
         faceSouth();
         if (super.frontIsClear()){
-            super.move(); //move
+            super.move();
             return true;
         }
 
@@ -122,7 +118,7 @@ public class BetterRobot extends Robot
     {
         faceWest();
         if (super.frontIsClear()){
-            super.move(); //move
+            super.move();
             return true;
         }
         else{

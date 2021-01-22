@@ -131,8 +131,9 @@ public class BetterRobot extends Robot
     public void victoryDance()
     {
         super.setSpeed(10);
-        Color[] colourList = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.PINK, Color.BLUE,};
+        Color[] colourList = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.PINK, Color.YELLOW,};
         faceNorth();
+        super.setLabel("WINNER!");
         for (int i = 0; i < 12; i++) { 
             super.turnLeft();
             super.setColor(colourList[i]);

@@ -2,10 +2,6 @@ import becker.robots.*;
 import java.awt.Color;
 public class BetterRobot extends Robot
 {
-
-    protected void customizeIntersection(Intersection intersection){
-        //IntersectionIcon(Color.WHITE, Color.PINK);
-    }
     //if karel.getIntersection().countSims() > 1 //move back
 
     //Constructor
@@ -17,7 +13,6 @@ public class BetterRobot extends Robot
     //public methods
 
     //robots face certain directions
-
     public void faceNorth(){
         Direction dFacing = getDirection();
         if (dFacing.equals(Direction.EAST)){
@@ -33,12 +28,6 @@ public class BetterRobot extends Robot
                 super.turnLeft();
             }
         }
-        // if (super.frontIsClear()){
-        // return true;
-        // }
-        // else{
-        // return false;
-        // }
     }
 
     public void faceEast()
@@ -47,12 +36,6 @@ public class BetterRobot extends Robot
         for(int i=0; i<3;i++){
             super.turnLeft();
         }
-        // if (super.frontIsClear()){
-        // return true;
-        // }
-        // else{
-        // return false;
-        // }
     }
 
     public void faceSouth()
@@ -61,24 +44,12 @@ public class BetterRobot extends Robot
         for(int i=0; i<2;i++){
             super.turnLeft();
         }
-        // if (super.frontIsClear()){
-        // return true;
-        // }
-        // else{
-        // return false;
-        // }
     }
 
     public void faceWest()
     {
         faceNorth();
         super.turnLeft();
-        // if (super.frontIsClear()){
-        // return true;
-        // }
-        // else{
-        // return false;
-        // }
     }
 
     //methods to make robots move in certain directions

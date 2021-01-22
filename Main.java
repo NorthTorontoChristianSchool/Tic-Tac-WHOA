@@ -1,13 +1,13 @@
 import becker.robots.*;
 import java.util.*; 
 import java.awt.Color;
-//import becker.robots.icons.*;
 import java.awt.geom.Rectangle2D;
 
 public class Main
 {
     public static void main(String[] args)
     {
+        
         //SETTING UP THE BOARD
 
         for (int i=0;i<=25;i++){//clearing the screen

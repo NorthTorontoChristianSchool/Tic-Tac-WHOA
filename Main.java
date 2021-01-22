@@ -117,7 +117,7 @@ public class Main
 
                     if (direction.equals("N")){
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.NORTH).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 ||robotMoving.moveNorth()==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 ||robotMoving.move(direction)==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
@@ -129,7 +129,7 @@ public class Main
                     }
                     else if (direction.equals("S")){
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.SOUTH).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 ||robotMoving.moveSouth()==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 ||robotMoving.move(direction)==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
@@ -141,7 +141,7 @@ public class Main
                     }
                     else if (direction.equals("E")){
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.EAST).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 || robotMoving.moveEast()==false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 || robotMoving.move(direction)==false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }
@@ -153,7 +153,7 @@ public class Main
                     }
                     else { //when choice is west
                         robotsAround = robotMoving.getIntersection().getNeighbor(Direction.WEST).countSims(IPredicate.anyRobot);
-                        if (robotsAround>0 || robotMoving.moveWest() == false) { //if robots/wall is blocking the way
+                        if (robotsAround>0 || robotMoving.move(direction) == false) { //if robots/wall is blocking the way
                             System.out.println("You cannot make that move, please pick again"); //make the move start again from here
                             loop = false;
                         }

@@ -56,18 +56,19 @@ public class BetterRobot extends Robot
 
     public boolean move(String d)
     {
-        if (d=="N"){
+        if (d.equals("N")){
             faceNorth();
         }
-        else if(d=="E"){
+        else if(d.equals("E")){
             faceEast();
         }
-        else if(d=="S"){
+        else if(d.equals("S")){
             faceSouth();
         }
-        else if(d=="W"){
+        else if(d.equals("W")){
             faceWest();
         }
+        
         if (super.frontIsClear()){
             super.move(); //move
             return true;

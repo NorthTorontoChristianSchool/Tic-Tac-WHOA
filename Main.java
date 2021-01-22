@@ -163,19 +163,69 @@ public class Main
                     }   
                 } while (loop == false);
 
+                int numsList[][] = { {2,0,0,1},{1,0,0,2},{2,0,0,1},{1,0,0,2} };
+
                 //make the moves within the list
                 for (int j = 0; j<boardList.length; j++){ //traverse through board list to locate the robot chosen
                     for(int k = 0; k<boardList.length; k++){
                         if (strNames[robotName].equals(boardList[j][k])){
+
+                            //updating the list of plain ints so that we can check for wins
+                            if( boardList[j][k] == "A"|| boardList[j][k] =="B"||boardList[j][k] =="C"||boardList[j][k] =="D" ){
+                                numsList[j+upOrDown][k+rightOrLeft] = 1;
+                            }
+                            else if( boardList[j][k] == "E"|| boardList[j][k] =="F"||boardList[j][k] =="G"||boardList[j][k] =="H" ){ 
+                                numsList[j+upOrDown][k+rightOrLeft] = 2;
+                            }
+                            numsList[j][k] = 0;
+
                             boardList[j+upOrDown][k+rightOrLeft] = boardList[j][k]; //move letter to empty space
-                            boardList[j][k] = ""; //replace space where letter was with and empty space
+                            boardList[j][k] = ""; //replace space where letter was with an empty space
+
                             //to test if it's working right
                             System.out.println("left spot " + boardList[j][k]); 
                             System.out.println("in spot " + boardList[j+upOrDown][k+rightOrLeft]);
+
                             //end both loops
                             k = 4;
-                            j = 4;
+                            j = 4;//can you use break?
                         }
+                    }
+                }
+
+                //checks for wins.
+                //10 ways to win; 4 hor, 4 ver, 2 diag
+                int winningNum=0;
+                if(robotName < 4){//player 1
+                    winningNum = 1;
+                }
+                else{//player 2
+                    winningNum = 2;
+                }
+
+                //winning algorithm
+                
+                if (numsList[0][0]==winningNum && numsList[1][1]==winningNum && numsList[2][2]==winningNum && numsList[3][3]==winningNum){
+                    System.out.println("Player "+winningNum+" Wins Diagonally Down!");
+                    break;
+                }
+                else if (numsList[3][0]==winningNum && numsList[2][1]==winningNum && numsList[1][2]==winningNum && numsList[0][3]==winningNum){
+                    System.out.println("Player "+winningNum+" Wins Diagonally Up!");
+                    break;
+                }
+                else {
+                    for(int i=0; i<4; i++){
+                        //checks rows
+                        if (numsList[i][0]==winningNum && numsList[i][1]==winningNum && numsList[i][2]==winningNum && numsList[i][3]==winningNum){
+                            System.out.println("Player "+winningNum+" Wins in Row " + (i+1) + "!");
+                            break;
+                        }
+                        //checks columns
+                        else if (numsList[0][i]==winningNum && numsList[1][i]==winningNum && numsList[2][i]==winningNum && numsList[3][i]==winningNum){
+                            System.out.println("Player "+winningNum+" Wins in Column " + (i+1) + "!");
+                            break;
+                        }
+                        //checks diagonals
                     }
                 }
             }

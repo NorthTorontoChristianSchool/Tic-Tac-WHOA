@@ -211,25 +211,25 @@ public class Main
                 System.out.println("row sum is " + rowSum);
                 System.out.println("column sum is " + columnSum);
 
-                if(columnSum==13){
+                if(columnSum==13 || columnSum == 3){
                     if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))){
                         winningNum = 1;
                         System.out.println("column win");
                     }
                 }
-                else if(columnSum ==10){
+                else if(columnSum ==10 || columnSum == 1){
                     if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))){
                         winningNum = 0;
                         System.out.println("column win");
                     }
                 }
-                else if(rowSum==13){
+                else if(rowSum==13 || rowSum==3){
                     if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))){
                         winningNum = 1;
                         System.out.println("row win");
                     }
                 }
-                else if(rowSum ==10){ 
+                else if(rowSum ==10 || rowSum == 1){ 
                     if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==0))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==0))){
                         winningNum = 0;
                         System.out.println("row win");

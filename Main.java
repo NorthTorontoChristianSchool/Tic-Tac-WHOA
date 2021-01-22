@@ -46,7 +46,8 @@ public class Main
 
         BetterRobot[] roboNames = {A,B,C,D,E,F,G,H};
         String[] strNames = {"A","B","C","D","E","F","G","H"};
-        int numsList[][] = { {2,0,0,1},{1,0,0,2},{2,0,0,1},{1,0,0,2} };
+        //int numsList[][] = { {2,0,0,1},{1,0,0,2},{2,0,0,1},{1,0,0,2} };
+        int numsList[][] = { {0,10,10,1},{1,10,10,0},{0,10,10,1},{1,10,10,0} };
 
         //p1
         for (int i=0; i<=3; i++){
@@ -63,8 +64,10 @@ public class Main
         //Get and validate the user's choice of where to move
         String robot, direction;
         Direction directionMoving;
-        BetterRobot robotMoving = A; //made it equal A because later it said the variable hadn't been initialized
-        int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0, winningNum=0; 
+
+        BetterRobot robotMoving = A;
+        int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0, winningNum=10;
+        int rowMoved = 0, columnMoved = 0, rowSum=0, columnSum=0;
         boolean loop = true, win = false;
 
         for(int rounds = 1; rounds < 1000; rounds++){ //note for Gelila: if nothing happens in the rounds loop, we can just use the moves loop and use modulus
@@ -175,9 +178,12 @@ public class Main
                                 numsList[j+upOrDown][k+rightOrLeft] = 1;
                             }
                             else if( boardList[j][k] == "E"|| boardList[j][k] =="F"||boardList[j][k] =="G"||boardList[j][k] =="H" ){ 
-                                numsList[j+upOrDown][k+rightOrLeft] = 2;
+                                numsList[j+upOrDown][k+rightOrLeft] = 0;
                             }
-                            numsList[j][k] = 0;
+                            numsList[j][k] = 10;
+
+                            rowMoved = j+upOrDown;
+                            columnMoved = k+rightOrLeft;
 
                             boardList[j+upOrDown][k+rightOrLeft] = boardList[j][k]; //move letter to empty space
                             boardList[j][k] = ""; //replace space where letter was with an empty space
@@ -193,48 +199,97 @@ public class Main
                     }
                 }
 
-                //checks for wins.
-                //10 ways to win; 4 hor, 4 ver, 2 diag
-                
-                if(robotName < 4){//player 1
-                    winningNum = 1;
+                rowSum=0; 
+                columnSum=0;
+                for(int j=0; j<4; j++){
+                    columnSum += numsList[j][columnMoved];
                 }
-                else{//player 2
-                    winningNum = 2;
+                for(int k=0; k<4; k++){
+                    rowSum += numsList[rowMoved][k];
                 }
 
-                //winning algorithm
-                
-                //checks diagonals
-                if (numsList[0][0]==winningNum && numsList[1][1]==winningNum && numsList[2][2]==winningNum && numsList[3][3]==winningNum){
-                    System.out.println("Player "+winningNum+" Wins Diagonally Down!");
-                    win = true;
-                    break;
+                //check for row/column win
+                if(columnSum==13){
+                    if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))){
+                        winningNum = 1;
+                    }
                 }
-                else if (numsList[3][0]==winningNum && numsList[2][1]==winningNum && numsList[1][2]==winningNum && numsList[0][3]==winningNum){
-                    System.out.println("Player "+winningNum+" Wins Diagonally Up!");
-                    win = true;
-                    break;
+                else if(columnSum ==10){
+                    if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))){
+                        winningNum = 0;
+                    }
                 }
-                else {
-                    for(int i=0; i<4; i++){
-                        //checks rows
-                        if (numsList[i][0]==winningNum && numsList[i][1]==winningNum && numsList[i][2]==winningNum && numsList[i][3]==winningNum){
-                            System.out.println("Player "+winningNum+" Wins in Row " + (i+1) + "!");
-                            win = true;
-                            break;
-                        }
-                        //checks columns
-                        else if (numsList[0][i]==winningNum && numsList[1][i]==winningNum && numsList[2][i]==winningNum && numsList[3][i]==winningNum){
-                            System.out.println("Player "+winningNum+" Wins in Column " + (i+1) + "!");
-                            win = true;
-                            break;
-                        }
-                        
+                else if(rowSum==13){
+                    if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))){
+                        winningNum = 1;
+                    }
+                }
+                else if(rowSum ==10){ 
+                    if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==0))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==0))){
+                        winningNum = 0;
                     }
                 }
                 
+                //check for diagnol win
+                //side diagnols
+                // else if ((rowMoved == columnMoved) && (rowMoved == 1|| rowMoved == 2)) {
+                    // if (numsList[rowMoved-1][columnMoved+1] == numsList[rowMoved][columnMoved] && numsList[rowMoved+1][columnMoved-1] == numsList[rowMoved][columnMoved]){
+                        // winningNum = numsList[rowMoved][columnMoved];
+                    // }
+                // }
+                
+
+                //congratulate winner
+                if (winningNum==1){
+                    System.out.println("Player 1 Wins!!");
+                }
+                else if (winningNum==0){
+                    System.out.println("Player 2 Wins!!");
+                }
+                System.out.println(winningNum);
+
+                //checks for wins.
+                //10 ways to win; 4 hor, 4 ver, 2 diag
+
+                // if(robotName < 4){//player 1
+                // winningNum = 1;
+                // }
+                // else{//player 2
+                // winningNum = 2;
+                // }
+
+                //winning algorithm
+
+                // //checks diagonals
+                // if (numsList[0][0]==winningNum && numsList[1][1]==winningNum && numsList[2][2]==winningNum && numsList[3][3]==winningNum){
+                // System.out.println("Player "+winningNum+" Wins Diagonally Down!");
+                // win = true;
+                // break;
+                // }
+                // else if (numsList[3][0]==winningNum && numsList[2][1]==winningNum && numsList[1][2]==winningNum && numsList[0][3]==winningNum){
+                // System.out.println("Player "+winningNum+" Wins Diagonally Up!");
+                // win = true;
+                // break;
+                // }
+                // else {
+                // for(int i=0; i<4; i++){
+                // //checks rows
+                // if (numsList[i][0]==winningNum && numsList[i][1]==winningNum && numsList[i][2]==winningNum && numsList[i][3]==winningNum){
+                // System.out.println("Player "+winningNum+" Wins in Row " + (i+1) + "!");
+                // win = true;
+                // break;
+                // }
+                // //checks columns
+                // else if (numsList[0][i]==winningNum && numsList[1][i]==winningNum && numsList[2][i]==winningNum && numsList[3][i]==winningNum){
+                // System.out.println("Player "+winningNum+" Wins in Column " + (i+1) + "!");
+                // win = true;
+                // break;
+                // }
+
+                // }
+                // }
                 //if (win = true){break;}
+
             }
         }
     }

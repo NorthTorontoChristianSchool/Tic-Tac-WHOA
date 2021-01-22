@@ -199,6 +199,7 @@ public class Main
                     }
                 }
 
+                //check for row/column win
                 rowSum=0; 
                 columnSum=0;
                 for(int j=0; j<4; j++){
@@ -208,7 +209,6 @@ public class Main
                     rowSum += numsList[rowMoved][k];
                 }
 
-                //check for row/column win
                 if(columnSum==13){
                     if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))){
                         winningNum = 1;
@@ -230,14 +230,26 @@ public class Main
                     }
                 }
                 
-                //check for diagnol win
-                //side diagnols
-                // else if ((rowMoved == columnMoved) && (rowMoved == 1|| rowMoved == 2)) {
-                    // if (numsList[rowMoved-1][columnMoved+1] == numsList[rowMoved][columnMoved] && numsList[rowMoved+1][columnMoved-1] == numsList[rowMoved][columnMoved]){
-                        // winningNum = numsList[rowMoved][columnMoved];
-                    // }
-                // }
-                
+                //diagonal win
+                else if(rowMoved==columnMoved || java.lang.Math.abs(rowMoved-columnMoved) == 2){ 
+                    if((numsList[0][0]==numsList[1][1] && numsList[1][1] == numsList[2][2]) || (numsList[3][3]==numsList[1][1] && numsList[1][1] == numsList[2][2])) {
+                        winningNum = numsList[1][1];
+                    }
+                    else if ((numsList[2][0]==numsList[1][1] && numsList[1][1] == numsList[0][2]) || (numsList[3][1]==numsList[2][2] && numsList[2][2] == numsList[1][3])){
+                        winningNum = numsList[rowMoved][columnMoved];
+                    }    
+                }
+                else if (rowMoved+columnMoved == 3){
+                    
+                     if((numsList[3][0]==numsList[2][1] && numsList[2][1] == numsList[1][2]) || (numsList[0][3]==numsList[2][1] && numsList[2][1] == numsList[1][2])){
+                        winningNum = numsList[2][1];
+                    }
+                }
+                else if (java.lang.Math.abs(rowMoved-columnMoved) == 1){
+                     if((numsList[1][0]==numsList[2][1] && numsList[2][1] == numsList[3][2]) || (numsList[0][1]==numsList[1][2] && numsList[1][2] == numsList[2][3])){
+                        winningNum = numsList[2][1];
+                    }
+                }
 
                 //congratulate winner
                 if (winningNum==1){

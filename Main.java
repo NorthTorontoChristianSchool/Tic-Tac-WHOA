@@ -1,6 +1,6 @@
 /*{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}
 {*}                                                                                                                                                                 {*}
-{*}                                                                       EPIC BOARD GAME                                                                           {*}
+{*}                                                                        Tic-Tac-WHOA                                                                             {*}
 {*}                                                                             by                                                                                  {*}
 {*}                                                                     Gelila and Olivia                                                                           {*}
 {*}                                                                                                                                                                 {*}
@@ -20,7 +20,7 @@ public class Main
             System.out.println("");
         }
         //welcoming the players
-        System.out.println("Welcome to Epic Board Game! Please press start.");
+        System.out.println("Welcome to Tic-Tac-WHOA! Please press start.");
         System.out.println("The first player who lines up three of their pieces wins!");
         Colours board = new Colours(6,6);
         Scanner in = new Scanner(System.in);

@@ -1,5 +1,5 @@
 *-*-*-*-*-*-*-*-*-*-*-*-*
- --- EPIC BOARD GAME ---
+ ---  Tic-Tac-WHOA  ---
 *-*-*-*-*-*-*-*-*-*-*-*-*
 
 INHERITANCE, OVERLOADING, AND OVERRIDING

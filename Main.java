@@ -72,7 +72,7 @@ public class Main
             roboNames[i].setSpeed(20);
         }
 
-        //creating a bunch of variables we used
+        //creating a bunch of variables and lists we used
         String boardList[][] = {{"E", "", "", "C"},{"A", "", "", "G"},{"F", "", "", "D"},{"B", "", "", "H"}}; //1st [] is for group, 2nd [] is for spot in group
         String robot, direction;
         Direction directionMoving, roboDir;
@@ -80,6 +80,7 @@ public class Main
         int robotsAround, robotName = 0, upOrDown = 0, rightOrLeft = 0, winningNum=10, rowMoved = 0, columnMoved = 0, rowSum=0, columnSum=0;
         boolean loop = true, win = false;
 
+        //Game Begins!
         for(int moves = 0; moves < 1000; moves++){ //move 1 by player 1, move 2 by player 2
             do{
                 //asks player one about what theyre moving and where

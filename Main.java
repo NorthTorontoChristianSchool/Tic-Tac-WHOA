@@ -16,7 +16,6 @@ public class Main
     {
 
         //SETTING UP THE BOARD
-
         for (int i=0;i<=25;i++){//clearing the screen
             System.out.println("");
         }
@@ -175,7 +174,7 @@ public class Main
 
                         boardList[j+upOrDown][k+rightOrLeft] = boardList[j][k]; //move letter to empty space
                         boardList[j][k] = ""; //replace space where letter was with an empty space
-                        
+
                         //end both loops
                         k = 4;
                         j = 4;
@@ -205,7 +204,7 @@ public class Main
                     winningNum = 0;
                 }
             }
-            
+
             //row wins
             else if(rowSum==13 || rowSum==3){
                 if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))){

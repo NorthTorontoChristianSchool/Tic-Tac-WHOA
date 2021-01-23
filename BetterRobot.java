@@ -30,27 +30,32 @@ public class BetterRobot extends Robot
 
     public void faceEast()
     {
-        faceNorth();
-        for(int i=0; i<3;i++){
-            super.turnLeft();
+        if(super.getDirection() != Direction.EAST){
+            faceNorth();
+            for(int i=0; i<3;i++){
+                super.turnLeft();
+            }
         }
     }
 
     public void faceSouth()
     {
-        faceNorth();
-        for(int i=0; i<2;i++){
-            super.turnLeft();
+        if(super.getDirection() != Direction.SOUTH){
+            faceNorth();
+            for(int i=0; i<2;i++){
+                super.turnLeft();
+            }
         }
     }
 
     public void faceWest()
     {
-        faceNorth();
-        super.turnLeft();
+        if(super.getDirection() != Direction.WEST){
+            faceNorth();
+            super.turnLeft();
+        }
     }
 
-    
     //methods to make robots move in certain directions
     //overloads the move() method so that you can specify the direction you move
     public boolean move(String d)
@@ -67,7 +72,7 @@ public class BetterRobot extends Robot
         else if(d.equals("W")){
             faceWest();
         }
-        
+
         if (super.frontIsClear()){
             super.move(); //move
             return true;
@@ -88,7 +93,7 @@ public class BetterRobot extends Robot
         }
 
     }
-    
+
     //loser dance :(
     //overrides the breakRobot() method for something much more useful... 
     //the robots spin around and break 

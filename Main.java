@@ -1,3 +1,11 @@
+/*{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}
+{*}                                                                                                                                                                 {*}
+{*}                                                                       EPIC BOARD GAME                                                                           {*}
+{*}                                                                             by                                                                                  {*}
+{*}                                                                     Gelila and Olivia                                                                           {*}
+{*}                                                                                                                                                                 {*}
+{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}{*}*/
+
 import becker.robots.*;
 import java.util.*; 
 import java.awt.Color;
@@ -63,7 +71,7 @@ public class Main
         for(int i=0; i<8; i++){
             roboNames[i].setSpeed(20);
         }
-        
+
         //creating a bunch of variables we used
         String boardList[][] = {{"E", "", "", "C"},{"A", "", "", "G"},{"F", "", "", "D"},{"B", "", "", "H"}}; //1st [] is for group, 2nd [] is for spot in group
         String robot, direction;
@@ -110,7 +118,7 @@ public class Main
                         break;
                     }
                 }
-                
+
                 //translates inputted direction (String) into a Direction
                 if(direction.equals("N")){
                     roboDir = Direction.NORTH;
@@ -122,34 +130,34 @@ public class Main
                     roboDir = Direction.SOUTH;
                 }
                 else {roboDir = Direction.WEST;}
-                
+
                 //checks if the desired direction is clear
                 robotsAround = robotMoving.getIntersection().getNeighbor(roboDir).countSims(IPredicate.anyRobot);
                 if (robotsAround>0 ||robotMoving.move(direction)==false) { 
-                        System.out.println("You cannot make that move, please pick again"); 
-                        loop = false;//makes the loop run again to ask the player to choose again
-                    }
-                
+                    System.out.println("You cannot make that move, please pick again"); 
+                    loop = false;//makes the loop run again to ask the player to choose again
+                }
+
                 //if the direction was clear, it had already moved; variables change to keep track of movement
                 else if (direction.equals("N")){
-                        loop = true;
-                        upOrDown = -1;
-                        rightOrLeft = 0;
+                    loop = true;
+                    upOrDown = -1;
+                    rightOrLeft = 0;
                 }
                 else if (direction.equals("S")){
-                        loop = true;
-                        upOrDown = 1;
-                        rightOrLeft = 0;
+                    loop = true;
+                    upOrDown = 1;
+                    rightOrLeft = 0;
                 }
                 else if (direction.equals("E")){
-                        loop = true;
-                        upOrDown = 0;
-                        rightOrLeft = 1;
+                    loop = true;
+                    upOrDown = 0;
+                    rightOrLeft = 1;
                 }
                 else { //when choice is west
-                        loop = true;
-                        upOrDown = 0;
-                        rightOrLeft = -1;
+                    loop = true;
+                    upOrDown = 0;
+                    rightOrLeft = -1;
                 }   
             } while (loop == false);
 
@@ -165,7 +173,6 @@ public class Main
                         else if( boardList[j][k] == "E"|| boardList[j][k] =="F"||boardList[j][k] =="G"||boardList[j][k] =="H" ){ 
                             numsList[j+upOrDown][k+rightOrLeft] = 0;
                         }
-                        
                         numsList[j][k] = 10;
 
                         rowMoved = j+upOrDown;
@@ -173,6 +180,7 @@ public class Main
 
                         boardList[j+upOrDown][k+rightOrLeft] = boardList[j][k]; //move letter to empty space
                         boardList[j][k] = ""; //replace space where letter was with an empty space
+                        
                         //end both loops
                         k = 4;
                         j = 4;
@@ -191,7 +199,7 @@ public class Main
                 rowSum += numsList[rowMoved][k];
             }
 
-                //column wins
+            //column wins
             if(columnSum==13 || columnSum == 3){
                 if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==1))){
                     winningNum = 1;
@@ -201,8 +209,9 @@ public class Main
                 if(((numsList[0][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))  || ((numsList[3][columnMoved] == numsList[1][columnMoved]) && (numsList[2][columnMoved]==0))){
                     winningNum = 0;
                 }
-                //row wins
             }
+            
+            //row wins
             else if(rowSum==13 || rowSum==3){
                 if(((numsList[rowMoved][0] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))  || ((numsList[rowMoved][3] == numsList[rowMoved][1]) && (numsList[rowMoved][2]==1))){
                     winningNum = 1;
@@ -236,7 +245,7 @@ public class Main
 
             //congratulate winner
             if (winningNum==1){//if p1 is the winner
-                System.out.println("Player 1 Wins!!");
+                System.out.println("(ﾉ^ヮ^)ﾉ*:・ﾟ✧ Player 1 Wins!! (ﾉ^ヮ^)ﾉ*:・ﾟ✧");
                 win = true;
                 for (int i=0; i<4; i++)
                 {
@@ -250,7 +259,7 @@ public class Main
             }
 
             else if (winningNum==0){//if p2 is the winner
-                System.out.println("Player 2 Wins!!");
+                System.out.println("(ﾉ^ヮ^)ﾉ*:・ﾟ✧ Player 2 Wins!! (ﾉ^ヮ^)ﾉ*:・ﾟ✧");
                 win = true;
                 for (int i=4; i<8; i++)
                 {

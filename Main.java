@@ -30,14 +30,8 @@ public class Main
         //creating the walls of the board game
         for (int i=1; i<=4; i++){
             Wall topWalls = new Wall (board,1,i,Direction.NORTH);
-        }
-        for (int i=1; i<=4; i++){
             Wall btmWalls = new Wall (board,4,i,Direction.SOUTH);
-        }
-        for (int i=1; i<=4; i++){
             Wall leftWalls = new Wall (board,i,1,Direction.WEST);
-        }
-        for (int i=1; i<=4; i++){
             Wall rightWalls = new Wall (board,i,4,Direction.EAST);
         }
 
